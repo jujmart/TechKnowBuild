@@ -21,6 +21,8 @@ class Project(db.Model):
     steps = db.relationship("Step", back_populates="project")
     project_supports = db.relationship(
         "Project_Support", back_populates="project")
+    comments = db.relationship(
+        "Comment", back_populates="project")
 
     def to_dict(self):
         return {
@@ -29,4 +31,5 @@ class Project(db.Model):
             'title': self.title,
             'description': self.description,
             'createdAt': self.createdAt,
+            "categories": [category.name for category in self.categories]
         }

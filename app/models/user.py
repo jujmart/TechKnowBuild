@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
                           nullable=False, server_default=func.now(), onupdate=func.now())
 
     projects = db.relationship("Project", back_populates="user")
+    comments = db.relationship("Comment", back_populates="user")
 
     @property
     def password(self):
