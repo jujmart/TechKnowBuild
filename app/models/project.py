@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from app.models.category import project_categories
 
 
 class Project(db.Model):
@@ -15,6 +16,8 @@ class Project(db.Model):
                           nullable=False, server_default=func.now(), onupdate=func.now())
 
     user = db.relationship("User", back_populates="projects")
+    categories = db.relationship(
+        "Category", secondary=project_categories, back_populates="projects")
 
     def to_dict(self):
         return {
