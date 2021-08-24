@@ -18,6 +18,7 @@ class Project(db.Model):
     user = db.relationship("User", back_populates="projects")
     categories = db.relationship(
         "Category", secondary=project_categories, back_populates="projects")
+    steps = db.relationship("Step", back_populates="project")
 
     def to_dict(self):
         return {
