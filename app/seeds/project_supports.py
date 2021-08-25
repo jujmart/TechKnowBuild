@@ -23,9 +23,9 @@ def seed_project_supports():
     for support in support_list:
         db.session.add(support)
 
-    computer.project_supports.extend([computer_support1, computer_support2])
-    phone.project_supports.extend([phone_support1, phone_support2])
-    tablet.project_supports.extend([tablet_support1, tablet_support2])
+    # computer.project_supports.extend([computer_support1, computer_support2])
+    # phone.project_supports.extend([phone_support1, phone_support2])
+    # tablet.project_supports.extend([tablet_support1, tablet_support2])
 
     db.session.commit()
 

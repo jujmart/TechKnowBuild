@@ -29,9 +29,9 @@ def seed_steps():
     for step in step_list:
         db.session.add(step)
 
-    computer.steps.extend([computer_step1, computer_step2, computer_step3])
-    phone.steps.extend([phone_step1, phone_step2, phone_step3])
-    tablet.steps.extend([tablet_step1, tablet_step2, tablet_step3])
+    # computer.steps.extend([computer_step1, computer_step2, computer_step3])
+    # phone.steps.extend([phone_step1, phone_step2, phone_step3])
+    # tablet.steps.extend([tablet_step1, tablet_step2, tablet_step3])
 
     db.session.commit()
 

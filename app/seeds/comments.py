@@ -34,12 +34,12 @@ def seed_comments():
     for comment in comment_list:
         db.session.add(comment)
 
-    computer.comments.extend(
-        [computer_comment1, computer_comment2, computer_comment3, computer_comment4])
-    phone.comments.extend(
-        [phone_comment1, phone_comment2, phone_comment3, phone_comment4])
-    tablet.comments.extend(
-        [tablet_comment1, tablet_comment2, tablet_comment3, tablet_comment4])
+    # computer.comments.extend(
+    #     [computer_comment1, computer_comment2, computer_comment3, computer_comment4])
+    # phone.comments.extend(
+    #     [phone_comment1, phone_comment2, phone_comment3, phone_comment4])
+    # tablet.comments.extend(
+    #     [tablet_comment1, tablet_comment2, tablet_comment3, tablet_comment4])
 
     db.session.commit()
 
