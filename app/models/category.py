@@ -27,4 +27,5 @@ class Category(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            "projectIds": [project.id for project in self.projects]
         }
