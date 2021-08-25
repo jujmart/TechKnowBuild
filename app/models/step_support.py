@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from sqlalchemy import CheckConstraint, column
 
 
 class Step_Support(db.Model):
@@ -14,6 +15,7 @@ class Step_Support(db.Model):
                           nullable=False, server_default=func.now())
     updatedAt = db.Column(db.DateTime(timezone=True),
                           nullable=False, server_default=func.now(), onupdate=func.now())
+    CheckConstraint(column("projectSupportType") in ["image", "video"])
 
     step = db.relationship("Step", back_populates="step_supports")
 
