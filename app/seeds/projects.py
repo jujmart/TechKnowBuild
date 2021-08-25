@@ -3,9 +3,9 @@ from app.models import db, Project
 computer = Project(
     userId=1, title='Build a computer', description='This walkthrough will show you how to put together the components that combine to make a computer!')
 phone = Project(
-    userId=1, title='Put together a phone', description="Let's put a phone together!")
+    userId=2, title='Put together a phone', description="Let's put a phone together!")
 tablet = Project(
-    userId=1, title='Tablet build', description="This build should be pretty similar to a phone.")
+    userId=3, title='Tablet build', description="This build should be pretty similar to a phone.")
 
 
 def seed_projects():
