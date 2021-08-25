@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import categories from "./categories";
 import projects from "./projects";
+import project_supports from "./project_supports";
 
 const rootReducer = combineReducers({
 	session,
 	categories,
 	projects,
+	project_supports,
 });
 
 let enhancer;

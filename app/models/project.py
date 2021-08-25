@@ -1,3 +1,4 @@
+from app.models import project_support
 from .db import db
 from sqlalchemy.sql import func
 from app.models.category import project_categories
@@ -31,5 +32,6 @@ class Project(db.Model):
             'title': self.title,
             'description': self.description,
             'createdAt': self.createdAt,
-            "categories": [category.name for category in self.categories]
+            "categories": [category.name for category in self.categories],
+            "project_supportIds": [project_support.id for project_support in self.project_supports],
         }
