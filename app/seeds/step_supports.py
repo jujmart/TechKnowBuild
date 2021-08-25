@@ -5,21 +5,21 @@ from app.seeds.steps import computer_step1, computer_step2, computer_step3, phon
 # Adds a demo user, you can add other users here if you want
 def seed_step_supports():
     computer_step1_support1 = Step_Support(
-        stepId=1, stepSupportType="image", stepSupportUrl="")
+        stepId=1, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Computer1Photo1.jpeg")
     computer_step1_support2 = Step_Support(
-        stepId=1, stepSupportType="image", stepSupportUrl="")
+        stepId=1, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Computer1Photo2.jpeg")
     computer_step2_support1 = Step_Support(
-        stepId=2, stepSupportType="image", stepSupportUrl="")
+        stepId=2, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Computer2Photo1.jpeg")
     phone_step1_support1 = Step_Support(
-        stepId=4, stepSupportType="image", stepSupportUrl="")
+        stepId=4, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Phone1Photo1.jpeg")
     phone_step2_support1 = Step_Support(
-        stepId=5, stepSupportType="image", stepSupportUrl="")
+        stepId=5, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Phone2Photo1.jpeg")
     phone_step2_support2 = Step_Support(
-        stepId=5, stepSupportType="image", stepSupportUrl="")
+        stepId=5, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Phone2Photo2.jpeg")
     tablet_step1_support1 = Step_Support(
-        stepId=7, stepSupportType="image", stepSupportUrl="")
+        stepId=7, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Tablet1Photo1.jpeg")
     tablet_step2_support1 = Step_Support(
-        stepId=8, stepSupportType="image", stepSupportUrl="")
+        stepId=8, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Tablet2Photo1.jpeg")
 
     support_list = [computer_step1_support1, computer_step1_support2, computer_step2_support1,
                     phone_step1_support1, phone_step2_support1, phone_step2_support2, tablet_step1_support1, tablet_step2_support1]
