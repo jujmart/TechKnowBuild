@@ -33,7 +33,7 @@ const NavBar = () => {
 							activeClassName="active"
 							className="navbar_login"
 						>
-							Login
+							Log In
 						</NavLink>
 						<span className="navbar_break">|</span>
 						<NavLink
