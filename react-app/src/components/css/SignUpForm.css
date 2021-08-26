@@ -1,11 +1,11 @@
-.login_form {
+.signup_form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 70%;
 }
 
-.login_submit-btn {
+.signup_submit-btn {
 	width: 100%;
 	padding: 5px;
 	margin: 10px;
@@ -15,33 +15,40 @@
 	border: 1px solid lightgray;
 }
 
-.login_email-input {
+.signup_username-input {
 	width: 100%;
 	padding: 5px;
 	margin: 10px;
 	box-sizing: border-box;
 }
 
-.login_password-input {
+.signup_email-input {
 	width: 100%;
 	padding: 5px;
 	margin: 10px;
 	box-sizing: border-box;
 }
 
-.login_switch-modals {
+.signup_password-input {
+	width: 100%;
+	padding: 5px;
+	margin: 10px;
+	box-sizing: border-box;
+}
+
+.signup_switch-modals {
 	color: blue;
 	cursor: pointer;
 }
 
-.login_switch-modals:hover {
+.signup_switch-modals:hover {
 	text-decoration: underline;
 }
 
-.login_extra-text {
+.signup_extra-text {
 	margin-top: 5px;
 }
 
-.login_form-header {
+.signup_form-header {
 	margin-bottom: 10px;
 }

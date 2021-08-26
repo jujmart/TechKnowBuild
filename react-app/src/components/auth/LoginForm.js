@@ -34,7 +34,7 @@ const LoginForm = () => {
 
 	return (
 		<form onSubmit={onLogin} className="login_form">
-			<h2>Log In!</h2>
+			<h2 className="login_form-header">Log In!</h2>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
@@ -42,11 +42,12 @@ const LoginForm = () => {
 			</div>
 			<input
 				name="email"
-				type="text"
+				type="email"
 				placeholder="Email"
 				value={email}
 				onChange={updateEmail}
 				className="login_email-input"
+				required
 			/>
 			<input
 				name="password"
@@ -54,6 +55,7 @@ const LoginForm = () => {
 				placeholder="Password"
 				value={password}
 				onChange={updatePassword}
+				required
 				className="login_password-input"
 			/>
 			<button type="submit" className="login_submit-btn">
@@ -65,7 +67,7 @@ const LoginForm = () => {
 					className="login_switch-modals"
 					onClick={() => dispatch(setShowSignup())}
 				>
-					Sign In
+					Sign Up
 				</span>
 			</div>
 		</form>
