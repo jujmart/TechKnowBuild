@@ -25,7 +25,10 @@
 	background-color: white;
 	border-radius: 10px;
 	width: 600px;
-	height: 150px;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .modal-form {
