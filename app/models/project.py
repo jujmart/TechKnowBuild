@@ -34,4 +34,5 @@ class Project(db.Model):
             'createdAt': self.createdAt,
             "categories": [category.name for category in self.categories],
             "project_supportIds": [project_support.id for project_support in self.project_supports],
+            "username": self.user.username
         }
