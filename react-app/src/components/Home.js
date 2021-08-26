@@ -9,10 +9,9 @@ export function Home() {
 	const categories = useSelector((state) => state.categories);
 	const projects = useSelector((state) => state.projects);
 	const dispatch = useDispatch();
-	fetch("/api/auth");
 
 	useEffect(() => {
-		// dispatch(getAllCategories());
+		dispatch(getAllCategories());
 	}, [dispatch]);
 
 	useEffect(() => {
