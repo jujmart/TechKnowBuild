@@ -34,12 +34,12 @@ export function Project() {
 			<div className="project_content-container">
 				<h1 className="project_title">{project?.title}</h1>
 				<div className="project_username">By {project?.username}</div>
-				<div className="project_project-support-images">
+				<div className="project_project-support-images_container">
 					{project?.project_supportIds.map((projectSupportId) =>
 						project_supports[projectSupportId]
 							?.projectSupportType === "image" ? (
 							<img
-								className="project_image"
+								className="project_project-support-image"
 								src={
 									project_supports[projectSupportId]
 										?.projectSupportUrl
@@ -48,6 +48,9 @@ export function Project() {
 							/>
 						) : null
 					)}
+				</div>
+				<div className="project_description">
+					{project?.description}
 				</div>
 			</div>
 		</div>

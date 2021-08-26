@@ -10,6 +10,16 @@
 	width: 87.5%;
 }
 
-.project_project-support-images {
+.project_project-support-images_container {
 	display: flex;
+}
+
+.project_project-support-image {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+}
+
+.project_description {
+	text-align: center;
 }
