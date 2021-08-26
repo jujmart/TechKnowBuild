@@ -4,6 +4,7 @@ import { getAllCategories } from "../store/categories";
 import { getSomeProjects } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
 import { ProjectCard } from "./ProjectCard";
+import "./css/Home.css";
 
 export function Home() {
 	const categories = useSelector((state) => state.categories);
@@ -44,20 +45,22 @@ export function Home() {
 
 	return (
 		<div className="home_container">
-			<h1>Explore Projects</h1>
-			{categories.map((category) => (
-				<div key={category.id} className="home_category-conatiner">
-					<h2>{category.name}</h2>
-					<div className="home_project-card-container">
-						{category.projectIds.map((projectId) => (
-							<ProjectCard
-								key={projectId}
-								projectId={projectId}
-							/>
-						))}
+			<div className="home_content_container">
+				<h1>Explore Projects</h1>
+				{categories.map((category) => (
+					<div key={category.id} className="home_category-conatiner">
+						<h2 className="home_category-title">{category.name}</h2>
+						<div className="home_project-card-container">
+							{category.projectIds.map((projectId) => (
+								<ProjectCard
+									key={projectId}
+									projectId={projectId}
+								/>
+							))}
+						</div>
 					</div>
-				</div>
-			))}
+				))}
+			</div>
 		</div>
 	);
 }
