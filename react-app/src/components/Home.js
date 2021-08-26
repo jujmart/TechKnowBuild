@@ -11,7 +11,7 @@ export function Home() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getAllCategories());
+		// dispatch(getAllCategories());
 	}, [dispatch]);
 
 	useEffect(() => {
