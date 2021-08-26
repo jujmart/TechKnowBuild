@@ -1,9 +1,15 @@
 // constants
 const SET_PROJECTS = "projects/SET_PROJECTS";
+const ADD_PROJECT = "projects/ADD_PROJECT";
 
 const setProjects = (projects) => ({
 	type: SET_PROJECTS,
 	projects,
+});
+
+const addProject = (project) => ({
+	type: ADD_PROJECT,
+	project,
 });
 
 export const getSomeProjects = (projectIds) => async (dispatch) => {
@@ -22,6 +28,18 @@ export const getSomeProjects = (projectIds) => async (dispatch) => {
 	}
 };
 
+export const getProjectById = (projectId) => async (dispatch) => {
+	const response = await fetch(`/api/projects/${projectId}`);
+
+	if (response.ok) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+		dispatch(addProject(data.project));
+	}
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -33,6 +51,10 @@ export default function reducer(state = initialState, action) {
 				newSetState[project.id] = project;
 			});
 			return newSetState;
+		case ADD_PROJECT:
+			const newAddState = { ...state };
+			newAddState[action.project.id] = action.project;
+			return newAddState;
 		default:
 			return state;
 	}
