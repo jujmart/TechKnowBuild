@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./css/ProjectCard.css";
 
 export function ProjectCard({ projectId }) {
@@ -21,11 +22,15 @@ export function ProjectCard({ projectId }) {
 	return (
 		<div className="project-card_container">
 			{firstSupportId && (
-				<img
-					className="project-card_image"
-					src={project_supports[firstSupportId]?.projectSupportUrl}
-					alt="Project Img"
-				/>
+				<Link to={`/projects/${firstSupportId}`}>
+					<img
+						className="project-card_image"
+						src={
+							project_supports[firstSupportId]?.projectSupportUrl
+						}
+						alt="Project Img"
+					/>
+				</Link>
 			)}
 			<div className="project-card_text-container">
 				<div className="project-card_title">
