@@ -9,3 +9,7 @@
 	align-items: center;
 	width: 87.5%;
 }
+
+.project_project-support-images {
+	display: flex;
+}
