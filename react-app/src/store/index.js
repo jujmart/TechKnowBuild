@@ -4,12 +4,14 @@ import session from "./session";
 import categories from "./categories";
 import projects from "./projects";
 import project_supports from "./project_supports";
+import modal from "./modal";
 
 const rootReducer = combineReducers({
 	session,
 	categories,
 	projects,
 	project_supports,
+	modal,
 });
 
 let enhancer;

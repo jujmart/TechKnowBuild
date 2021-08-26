@@ -20,6 +20,7 @@ nav {
 	text-decoration: none;
 	padding: 0px 5px;
 	font-weight: 100;
+	cursor: pointer;
 }
 
 .navbar_login:hover {
@@ -31,6 +32,7 @@ nav {
 	text-decoration: none;
 	padding: 0px 5px;
 	font-weight: 100;
+	cursor: pointer;
 }
 
 .navbar_signup:hover {
@@ -59,10 +61,6 @@ nav {
 
 .navbar_logout:hover {
 	text-decoration: underline;
-}
-
-.active {
-	color: blue;
 }
 
 .navbar_break {
