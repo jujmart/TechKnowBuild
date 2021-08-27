@@ -14,8 +14,12 @@ export function Project() {
 	const history = useHistory();
 
 	async function handleDeleteProject() {
-		await dispatch(deleteProjectThunk(project.id));
+		await dispatch(deleteProjectThunk(projectId));
 		history.push("/");
+	}
+
+	async function handleEditProject() {
+		history.push(`/edit-project/${projectId}`);
 	}
 
 	useEffect(() => {
@@ -41,7 +45,10 @@ export function Project() {
 			<div className="project_content-container">
 				<h1 className="project_title">{project?.title}</h1>
 				{user.id === project?.userId && (
-					<button onClick={handleDeleteProject}>Delete</button>
+					<div>
+						<button onClick={handleEditProject}>Edit</button>
+						<button onClick={handleDeleteProject}>Delete</button>
+					</div>
 				)}
 				<div className="project_username">By {project?.username}</div>
 				<div className="project_project-support-images_container">

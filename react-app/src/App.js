@@ -7,7 +7,8 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import { Home } from "./components/Home";
 import { Project } from "./components/Project";
-import { ProjectForm } from "./components/ProjectForm";
+import { ProjectForm } from "./components/CreateProjectForm";
+import { EditProjectForm } from "./components/EditProjectForm";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,9 @@ function App() {
 				</Route>
 				<ProtectedRoute path="/create-project" exact={true}>
 					<ProjectForm />
+				</ProtectedRoute>
+				<ProtectedRoute path="/edit-project/:projectId" exact={true}>
+					<EditProjectForm />
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>
