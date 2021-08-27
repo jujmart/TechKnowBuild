@@ -17,7 +17,8 @@ class Step(db.Model):
                           nullable=False, server_default=func.now(), onupdate=func.now())
 
     project = db.relationship("Project", back_populates="steps")
-    step_supports = db.relationship("Step_Support", back_populates="step")
+    step_supports = db.relationship(
+        "Step_Support", back_populates="step", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
