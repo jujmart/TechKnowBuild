@@ -40,36 +40,39 @@ export const getProjectById = (projectId) => async (dispatch) => {
 	}
 };
 
-export const createProjectThunk = (imageData, data) => async (dispatch) => {
-	const SQLresponse = await fetch(`/api/projects/`, {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(data),
-	});
-
-	if (SQLresponse.ok) {
-		const SQLdata = await SQLresponse.json();
-		if (SQLdata.errors) {
-			return SQLdata;
-		}
-
-		const AWSResponse = await fetch(
-			`/api/project_supports/AWS/${SQLdata.projectId}`,
+export const createProjectThunk =
+	(imageData, data, categoryId) => async (dispatch) => {
+		const SQLresponse = await fetch(
+			`/api/projects/categories/${categoryId}`,
 			{
 				method: "POST",
-				body: imageData,
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(data),
 			}
 		);
 
-		if (AWSResponse.ok) {
-			const AWSData = await AWSResponse.json();
-			if (AWSData.errors) {
-				return AWSData;
+		if (SQLresponse.ok) {
+			const SQLdata = await SQLresponse.json();
+			if (SQLdata.errors) {
+				return SQLdata;
+			}
+
+			const AWSResponse = await fetch(
+				`/api/project_supports/AWS/${SQLdata.projectId}`,
+				{
+					method: "POST",
+					body: imageData,
+				}
+			);
+
+			if (AWSResponse.ok) {
+				const AWSData = await AWSResponse.json();
+				if (AWSData.errors) {
+					return AWSData;
+				}
 			}
 		}
-		return SQLdata;
-	}
-};
+	};
 
 const initialState = {};
 
