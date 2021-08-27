@@ -1,0 +1,10 @@
+.project-form_form {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+
+.project-form_form-container {
+	display: flex;
+	justify-content: center;
+}
