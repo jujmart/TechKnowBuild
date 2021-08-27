@@ -16,7 +16,7 @@ export function EditProjectForm() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [projectSupport, setProjectSupport] = useState(null);
-	const [categoryId, setCategoryId] = useState(null);
+	const [categoryId, setCategoryId] = useState(0);
 	const [errors, setErrors] = useState([]);
 	const categories = useSelector((state) => state.categories);
 	const project = useSelector((state) => state.projects[projectId]);
@@ -59,7 +59,7 @@ export function EditProjectForm() {
 		setCategoryId(
 			categories.find(
 				(category) => category.name === project?.categories[0]
-			).id
+			)?.id
 		);
 	}, [project, categories]);
 
