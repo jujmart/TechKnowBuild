@@ -1,3 +1,5 @@
+import { updateProject_Support } from "./project_supports";
+
 // constants
 const SET_PROJECTS = "projects/SET_PROJECTS";
 const ADD_PROJECT = "projects/ADD_PROJECT";
@@ -87,6 +89,44 @@ export const deleteProjectThunk = (projectId) => async (dispatch) => {
 		}
 	}
 };
+
+export const editProjectThunk =
+	(imageData, data, categoryId, projectId) => async (dispatch) => {
+		const SQLresponse = await fetch(
+			`/api/projects/${projectId}/categories/${categoryId}`,
+			{
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(data),
+			}
+		);
+
+		if (SQLresponse.ok) {
+			const SQLdata = await SQLresponse.json();
+			if (SQLdata.errors) {
+				return SQLdata;
+			}
+
+			if (imageData) {
+				const AWSResponse = await fetch(
+					`/api/project_supports/AWS/${SQLdata.projectSupportId}`,
+					{
+						method: "PUT",
+						body: imageData,
+					}
+				);
+
+				if (AWSResponse.ok) {
+					const AWSData = await AWSResponse.json();
+					if (AWSData.errors) {
+						return AWSData;
+					}
+					dispatch(updateProject_Support(AWSData.projectSupport));
+				}
+			}
+			return SQLdata;
+		}
+	};
 
 const initialState = {};
 

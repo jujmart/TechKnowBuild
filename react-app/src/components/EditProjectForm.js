@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getAllCategories } from "../store/categories";
-import {
-	createProjectThunk,
-	getProjectById,
-	getSomeProjects,
-} from "../store/projects";
+import { editProjectThunk, getProjectById } from "../store/projects";
 import "./css/ProjectForm.css";
 
 export function EditProjectForm() {
@@ -25,8 +21,12 @@ export function EditProjectForm() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		const imageData = new FormData();
-		imageData.set("image", projectSupport);
+		let imageData = new FormData();
+		if (projectSupport) {
+			imageData.set("image", projectSupport);
+		} else {
+			imageData = null;
+		}
 
 		const projectData = {
 			title,
@@ -34,12 +34,12 @@ export function EditProjectForm() {
 		};
 
 		const response = await dispatch(
-			createProjectThunk(imageData, projectData, categoryId)
+			editProjectThunk(imageData, projectData, categoryId, projectId)
 		);
 		if (response.errors) {
 			setErrors(response.errors);
 		} else {
-			history.push(`/projects/${response.projectId}`);
+			history.push(`/projects/${projectId}`);
 		}
 	}
 
@@ -107,7 +107,6 @@ export function EditProjectForm() {
 				<input
 					type="file"
 					name="project_support-image"
-					required
 					accept=".pdf,.png,.jpg,.jpeg,.gif"
 					onChange={(e) => setProjectSupport(e.target.files[0])}
 				/>

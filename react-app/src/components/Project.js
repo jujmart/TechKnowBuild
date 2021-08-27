@@ -23,10 +23,8 @@ export function Project() {
 	}
 
 	useEffect(() => {
-		if (!project) {
-			dispatch(getProjectById(projectId));
-		}
-	}, [dispatch, projectId, project]);
+		dispatch(getProjectById(projectId));
+	}, [dispatch, projectId]);
 
 	useEffect(() => {
 		if (project) {
@@ -62,6 +60,7 @@ export function Project() {
 										?.projectSupportUrl
 								}
 								alt="Project Img"
+								key={projectSupportId}
 							/>
 						) : null
 					)}

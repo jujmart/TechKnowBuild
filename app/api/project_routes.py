@@ -64,3 +64,21 @@ def delete_project(id):
         db.session.delete(project)
         db.session.commit()
     return {}
+
+
+@project_routes.route('/<int:project_id>/categories/<int:category_id>', methods=["PUT"])
+@login_required
+def edit_project(project_id, category_id):
+    if (category_id == None):
+        return {'errors': ["Please select a category"]}
+    form = ProjectForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        project = Project.query.get_or_404(project_id)
+        project.title = form.data["title"]
+        project.description = form.data["description"]
+        category = Category.query.get_or_404(category_id)
+        project.categories = [category]
+        db.session.commit()
+        return {'projectSupportId': project.project_supports[0].id}
+    return {'errors': validation_errors_to_error_messages(form.errors)}
