@@ -1,6 +1,7 @@
 from app.AWS import allowed_file, get_unique_filename, upload_file_to_s3
 from flask import Blueprint, request
 from app.models import Project_Support, db
+from flask_login import login_required
 
 project_support_routes = Blueprint('project_supports', __name__)
 
@@ -14,6 +15,7 @@ def get_some_project_supports():
 
 
 @project_support_routes.route("/AWS/<int:id>", methods=['POST'])
+@login_required
 def create_project_support_with_aws(id):
 
     if "image" not in request.files:

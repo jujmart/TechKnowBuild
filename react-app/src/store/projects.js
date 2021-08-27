@@ -75,6 +75,19 @@ export const createProjectThunk =
 		}
 	};
 
+export const deleteProjectThunk = (projectId) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/projects/${projectId}`, {
+		method: "DELETE",
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+	}
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
