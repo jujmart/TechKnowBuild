@@ -18,8 +18,10 @@ class User(db.Model, UserMixin):
     updatedAt = db.Column(db.DateTime(timezone=True),
                           nullable=False, server_default=func.now(), onupdate=func.now())
 
-    projects = db.relationship("Project", back_populates="user")
-    comments = db.relationship("Comment", back_populates="user")
+    projects = db.relationship(
+        "Project", back_populates="user", cascade="all, delete-orphan")
+    comments = db.relationship(
+        "Comment", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProjectById } from "../store/projects";
+import { useHistory, useParams } from "react-router-dom";
+import { deleteProjectThunk, getProjectById } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
 import "./css/Project.css";
 
@@ -9,13 +9,22 @@ export function Project() {
 	const { projectId } = useParams();
 	const project = useSelector((state) => state.projects[projectId]);
 	const project_supports = useSelector((state) => state.project_supports);
+	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
+	const history = useHistory();
+
+	async function handleDeleteProject() {
+		await dispatch(deleteProjectThunk(projectId));
+		history.push("/");
+	}
+
+	async function handleEditProject() {
+		history.push(`/edit-project/${projectId}`);
+	}
 
 	useEffect(() => {
-		if (!project) {
-			dispatch(getProjectById(projectId));
-		}
-	}, [dispatch, projectId, project]);
+		dispatch(getProjectById(projectId));
+	}, [dispatch, projectId]);
 
 	useEffect(() => {
 		if (project) {
@@ -33,6 +42,12 @@ export function Project() {
 		<div className="project_container">
 			<div className="project_content-container">
 				<h1 className="project_title">{project?.title}</h1>
+				{user.id === project?.userId && (
+					<div>
+						<button onClick={handleEditProject}>Edit</button>
+						<button onClick={handleDeleteProject}>Delete</button>
+					</div>
+				)}
 				<div className="project_username">By {project?.username}</div>
 				<div className="project_project-support-images_container">
 					{project?.project_supportIds.map((projectSupportId) =>
@@ -45,6 +60,7 @@ export function Project() {
 										?.projectSupportUrl
 								}
 								alt="Project Img"
+								key={projectSupportId}
 							/>
 						) : null
 					)}
