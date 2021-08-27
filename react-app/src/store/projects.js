@@ -71,6 +71,7 @@ export const createProjectThunk =
 					return AWSData;
 				}
 			}
+			return SQLdata;
 		}
 	};
 

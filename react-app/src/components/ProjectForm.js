@@ -29,10 +29,10 @@ export function ProjectForm() {
 		const response = await dispatch(
 			createProjectThunk(imageData, projectData, categoryId)
 		);
-		if (response) {
+		if (response.errors) {
 			setErrors(response.errors);
 		} else {
-			// history.push(`/projects/${projectId}`)
+			history.push(`/projects/${response.projectId}`);
 		}
 	}
 
