@@ -58,7 +58,16 @@ const NavBar = () => {
 						) : null}
 					</>
 				) : (
-					<LogoutButton />
+					<>
+						<Link
+							to="/create-project"
+							className="navbar_create-project"
+						>
+							Create Project
+						</Link>
+						<span className="navbar_break">|</span>
+						<LogoutButton />
+					</>
 				)}
 			</div>
 		</nav>

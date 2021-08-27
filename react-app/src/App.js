@@ -7,6 +7,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import { Home } from "./components/Home";
 import { Project } from "./components/Project";
+import { ProjectForm } from "./components/ProjectForm";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,9 @@ function App() {
 				<Route path="/projects/:projectId" exact={true}>
 					<Project />
 				</Route>
+				<ProtectedRoute path="/create-project" exact={true}>
+					<ProjectForm />
+				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>
 	);
