@@ -11,7 +11,7 @@ export function ProjectForm() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [projectSupport, setProjectSupport] = useState(null);
-	const [categoryId, setCategoryId] = useState(null);
+	const [categoryId, setCategoryId] = useState(0);
 	const [errors, setErrors] = useState([]);
 	const categories = useSelector((state) => state.categories);
 
