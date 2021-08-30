@@ -5,8 +5,10 @@ import { Modal } from "../context/Modal";
 import { setClose, setShowDeleteConfirm } from "../store/modal";
 import { getProjectById } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
+import { getSomeSteps } from "../store/steps";
 import "./css/Project.css";
 import { DeleteConfirmForm } from "./DeleteConfirmForm";
+import { Step } from "./Step";
 
 export function Project() {
 	const { projectId } = useParams();
@@ -34,6 +36,18 @@ export function Project() {
 				}
 			});
 			dispatch(getSomeProject_Supports(project_supportIds));
+		}
+	}, [dispatch, project]);
+
+	useEffect(() => {
+		if (project) {
+			const stepIds = [];
+			project.stepIds.forEach((stepId) => {
+				if (!stepIds.includes(stepId)) {
+					stepIds.push(stepId);
+				}
+			});
+			dispatch(getSomeSteps(stepIds));
 		}
 	}, [dispatch, project]);
 
@@ -81,6 +95,11 @@ export function Project() {
 				</div>
 				<div className="project_description">
 					{project?.description}
+				</div>
+				<div>
+					{project?.stepIds.map((stepId, stepNum) => (
+						<Step key={stepId} stepId={stepId} stepNum={stepNum} />
+					))}
 				</div>
 			</div>
 		</div>

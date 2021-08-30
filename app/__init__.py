@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.category_routes import category_routes
 from .api.project_routes import project_routes
 from .api.project_support_routes import project_support_routes
+from .api.step_routes import step_routes
 
 from .seeds import seed_commands
 
@@ -38,6 +39,7 @@ app.register_blueprint(category_routes, url_prefix='/api/categories')
 app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(project_support_routes,
                        url_prefix='/api/project_supports')
+app.register_blueprint(step_routes, url_prefix='/api/steps')
 db.init_app(app)
 Migrate(app, db)
 

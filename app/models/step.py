@@ -27,4 +27,5 @@ class Step(db.Model):
             'title': self.title,
             'instruction': self.instruction,
             "createdAt": self.createdAt,
+            "step_supportIds": [step_support.id for step_support in self.step_supports],
         }

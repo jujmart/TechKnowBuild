@@ -16,7 +16,7 @@ phone_step3 = Step(
 tablet_step1 = Step(
     projectId=3, title='Get tablet parts', instruction='Get the parts')
 tablet_step2 = Step(
-    projectId=2, title='Put together parts', instruction='This part goes here. This part goes here.')
+    projectId=3, title='Put together parts', instruction='This part goes here. This part goes here.')
 tablet_step3 = Step(
     projectId=3, title='Finishing touches', instruction='Finish it with this.')
 
