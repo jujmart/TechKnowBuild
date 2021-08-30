@@ -15,8 +15,22 @@ export function ProjectForm() {
 	const [errors, setErrors] = useState([]);
 	const categories = useSelector((state) => state.categories);
 
+	const imageFileExts = ["pdf", "png", "jpg", "jpeg", "gif"];
+
 	async function handleSubmit(e) {
 		e.preventDefault();
+
+		if (!projectSupport) {
+			setErrors(["Project image required"]);
+			return;
+		}
+
+		const imageNameSplit = projectSupport.name.split(".");
+		const imageExt = imageNameSplit[imageNameSplit.length - 1];
+		if (!imageFileExts.includes(imageExt)) {
+			setErrors(["File type not permitted"]);
+			return;
+		}
 
 		const imageData = new FormData();
 		imageData.set("image", projectSupport);
@@ -45,9 +59,11 @@ export function ProjectForm() {
 			<form className="project-form_form" onSubmit={handleSubmit}>
 				<h1 className="project-form_header">Create a Project!</h1>
 				{errors.length ? (
-					<ul>
+					<ul className="errors-ul">
 						{errors.map((error) => (
-							<li key={error}>{error}</li>
+							<li key={error} className="errors-li">
+								{error}
+							</li>
 						))}
 					</ul>
 				) : null}
@@ -73,7 +89,7 @@ export function ProjectForm() {
 					value={categoryId}
 					onChange={(e) => setCategoryId(e.target.value)}
 				>
-					<option>Please select a category</option>
+					<option value={0}>Please select a category</option>
 					{categories.map((category) => (
 						<option key={category.id} value={category.id}>
 							{category.name}

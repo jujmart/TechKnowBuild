@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{field.title()} : {error}')
     return errorMessages
 
 
@@ -34,7 +34,7 @@ def get_project_by_id(id):
 @project_routes.route('/categories/<int:id>', methods=["POST"])
 @login_required
 def create_project(id):
-    if (id == None):
+    if (id == 0):
         return {'errors': ["Please select a category"]}
     form = ProjectForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -69,7 +69,7 @@ def delete_project(id):
 @project_routes.route('/<int:project_id>/categories/<int:category_id>', methods=["PUT"])
 @login_required
 def edit_project(project_id, category_id):
-    if (category_id == None):
+    if (category_id == 0):
         return {'errors': ["Please select a category"]}
     form = ProjectForm()
     form['csrf_token'].data = request.cookies['csrf_token']
