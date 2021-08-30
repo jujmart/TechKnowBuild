@@ -18,8 +18,19 @@ export function EditProjectForm() {
 	const project = useSelector((state) => state.projects[projectId]);
 	const user = useSelector((state) => state.session.user);
 
+	const imageFileExts = ["pdf", "png", "jpg", "jpeg", "gif"];
+
 	async function handleSubmit(e) {
 		e.preventDefault();
+
+		if (projectSupport) {
+			const imageNameSplit = projectSupport.name.split(".");
+			const imageExt = imageNameSplit[imageNameSplit.length - 1];
+			if (!imageFileExts.includes(imageExt)) {
+				setErrors(["File type not permitted"]);
+				return;
+			}
+		}
 
 		let imageData = new FormData();
 		if (projectSupport) {
@@ -70,10 +81,13 @@ export function EditProjectForm() {
 	return (
 		<div className="project-form_form-container">
 			<form className="project-form_form" onSubmit={handleSubmit}>
+				<h1 className="project-form_header">Edit a Project!</h1>
 				{errors.length ? (
-					<ul>
+					<ul className="errors-ul">
 						{errors.map((error) => (
-							<li key={error}>{error}</li>
+							<li key={error} className="errors-li">
+								{error}
+							</li>
 						))}
 					</ul>
 				) : null}
@@ -82,6 +96,7 @@ export function EditProjectForm() {
 					name="title"
 					placeholder="Title"
 					required
+					className="project-form_title-input"
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
 				/>
@@ -89,28 +104,37 @@ export function EditProjectForm() {
 					name="description"
 					placeholder="Description"
 					required
+					className="project-form_description-input"
 					value={description}
 					onChange={(e) => setDescription(e.target.value)}
 				/>
 				<select
+					className="project-form_category-input"
 					value={categoryId}
 					onChange={(e) => setCategoryId(e.target.value)}
 				>
-					<option>Please select a category</option>
+					<option value={0}>Please select a category</option>
 					{categories.map((category) => (
 						<option key={category.id} value={category.id}>
 							{category.name}
 						</option>
 					))}
 				</select>
-				<label>Project Image</label>
-				<input
-					type="file"
-					name="project_support-image"
-					accept=".pdf,.png,.jpg,.jpeg,.gif"
-					onChange={(e) => setProjectSupport(e.target.files[0])}
-				/>
-				<button>Update Project</button>
+				<div className="project-form_project-image-div">
+					<label className="project-form_project-image-label">
+						Project Image
+					</label>
+					<input
+						type="file"
+						name="project_support-image"
+						className="project-form_project-image-input"
+						accept=".pdf,.png,.jpg,.jpeg,.gif"
+						onChange={(e) => setProjectSupport(e.target.files[0])}
+					/>{" "}
+				</div>
+				<button className="project-form_submit-btn">
+					Update Project
+				</button>
 			</form>
 		</div>
 	);

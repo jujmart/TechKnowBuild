@@ -42,7 +42,7 @@ export function Project() {
 		<div className="project_container">
 			<div className="project_content-container">
 				<h1 className="project_title">{project?.title}</h1>
-				{user.id === project?.userId && (
+				{user?.id === project?.userId && (
 					<div>
 						<button onClick={handleEditProject}>Edit</button>
 						<button onClick={handleDeleteProject}>Delete</button>

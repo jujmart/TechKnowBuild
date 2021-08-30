@@ -42,7 +42,6 @@ export default function reducer(state = initialState, action) {
 			return newSetState;
 		case UPDATE_PROJECT_SUPPORT:
 			const newUpdateState = { ...state };
-			console.log(action.project_support);
 			newUpdateState[action.project_support.id] = action.project_support;
 			return newUpdateState;
 		default:

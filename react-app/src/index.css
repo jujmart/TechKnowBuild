@@ -3,3 +3,15 @@
 	font-family: "Archivo", sans-serif;
 	margin: 0px;
 }
+
+.errors-ul {
+	background-color: rgb(192, 123, 123);
+	border-radius: 2px;
+	list-style-type: none;
+	padding-left: 15px;
+}
+
+.errors-li {
+	color: darkred;
+	padding: 1px 0px;
+}
