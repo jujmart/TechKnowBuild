@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { setShowLogin } from "../../store/modal";
+import { setClose, setShowLogin } from "../../store/modal";
 import { signUp } from "../../store/session";
 import "../css/SignUpForm.css";
 
@@ -22,6 +22,8 @@ const SignUpForm = () => {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
 				setErrors(data);
+			} else {
+				dispatch(setClose());
 			}
 		}
 	};

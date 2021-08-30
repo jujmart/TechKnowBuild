@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { setShowSignup } from "../../store/modal";
+import { setClose, setShowSignup } from "../../store/modal";
 import { login } from "../../store/session";
 import "../css/LoginForm.css";
 
@@ -17,6 +17,8 @@ const LoginForm = () => {
 		const data = await dispatch(login(email, password));
 		if (data) {
 			setErrors(data);
+		} else {
+			dispatch(setClose());
 		}
 	};
 
