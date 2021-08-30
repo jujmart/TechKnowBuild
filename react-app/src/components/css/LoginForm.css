@@ -45,4 +45,10 @@
 
 .login_form-header {
 	margin-bottom: 10px;
+	text-align: center;
 }
+
+/* .delete-confirm_button-container {
+	display: flex;
+	justify-items: flex-start;
+} */

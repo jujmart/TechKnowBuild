@@ -67,6 +67,8 @@ const NavBar = () => {
 						</Link>
 						<span className="navbar_break">|</span>
 						<LogoutButton />
+						<span className="navbar_break">|</span>
+						<span>Hello, {user.username}</span>
 					</>
 				)}
 			</div>

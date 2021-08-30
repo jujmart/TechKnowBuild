@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { setShowLogin } from "../../store/modal";
+import { setClose, setShowLogin } from "../../store/modal";
 import { signUp } from "../../store/session";
 import "../css/SignUpForm.css";
 
@@ -16,10 +16,14 @@ const SignUpForm = () => {
 
 	const onSignUp = async (e) => {
 		e.preventDefault();
-		if (password === repeatPassword) {
+		if (password !== repeatPassword) {
+			setErrors(["Passwords must match"]);
+		} else {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
 				setErrors(data);
+			} else {
+				dispatch(setClose());
 			}
 		}
 	};
@@ -47,11 +51,15 @@ const SignUpForm = () => {
 	return (
 		<form onSubmit={onSignUp} className="signup_form">
 			<h2 className="signup_form-header">Sign Up!</h2>
-			<div>
-				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
-				))}
-			</div>
+			{errors.length ? (
+				<ul className="errors-ul">
+					{errors.map((error, ind) => (
+						<li key={ind} className="errors-li">
+							{error}
+						</li>
+					))}
+				</ul>
+			) : null}
 			<input
 				type="text"
 				name="username"
