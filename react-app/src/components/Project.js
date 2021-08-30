@@ -1,22 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteProjectThunk, getProjectById } from "../store/projects";
+import { Modal } from "../context/Modal";
+import { setClose, setShowDeleteConfirm } from "../store/modal";
+import { getProjectById } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
 import "./css/Project.css";
+import { DeleteConfirmForm } from "./DeleteConfirmForm";
 
 export function Project() {
 	const { projectId } = useParams();
 	const project = useSelector((state) => state.projects[projectId]);
 	const project_supports = useSelector((state) => state.project_supports);
+	const deleteConfirm = useSelector((state) => state.modal.delete);
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 	const history = useHistory();
-
-	async function handleDeleteProject() {
-		await dispatch(deleteProjectThunk(projectId));
-		history.push("/");
-	}
 
 	async function handleEditProject() {
 		history.push(`/edit-project/${projectId}`);
@@ -51,11 +50,16 @@ export function Project() {
 							Edit
 						</button>
 						<button
-							onClick={handleDeleteProject}
+							onClick={() => dispatch(setShowDeleteConfirm())}
 							className="project_delete-btn"
 						>
 							Delete
 						</button>
+						{deleteConfirm ? (
+							<Modal onClose={() => dispatch(setClose())}>
+								<DeleteConfirmForm projectId={projectId} />
+							</Modal>
+						) : null}
 					</div>
 				)}
 				<div className="project_username">By {project?.username}</div>
