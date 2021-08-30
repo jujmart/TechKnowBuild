@@ -13,6 +13,7 @@
 	border-radius: 5px;
 	border-style: unset;
 	border: 1px solid lightgray;
+	cursor: pointer;
 }
 
 .signup_username-input {
