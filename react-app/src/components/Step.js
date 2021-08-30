@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getSomeStep_Supports } from "../store/step_supports";
 
 export function Step({ stepId, stepNum }) {
 	const step = useSelector((state) => state.steps[stepId]);
@@ -21,7 +22,7 @@ export function Step({ stepId, stepNum }) {
 	return (
 		<div>
 			<h3>
-				Step {stepNum + 1}: {step?.title}
+				Step {stepNum}: {step?.title}
 			</h3>
 			<div className="project_project-support-images_container">
 				{step?.step_supportIds.map((stepSupportId) =>
@@ -30,7 +31,7 @@ export function Step({ stepId, stepNum }) {
 						<img
 							className="project_project-support-image"
 							src={step_supports[stepSupportId]?.stepSupportUrl}
-							alt="Project Img"
+							alt="Step Img"
 							key={stepSupportId}
 						/>
 					) : null

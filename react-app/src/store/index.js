@@ -6,6 +6,7 @@ import projects from "./projects";
 import project_supports from "./project_supports";
 import modal from "./modal";
 import steps from "./steps";
+import step_supports from "./step_supports";
 
 const rootReducer = combineReducers({
 	session,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
 	project_supports,
 	modal,
 	steps,
+	step_supports,
 });
 
 let enhancer;

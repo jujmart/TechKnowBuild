@@ -98,7 +98,11 @@ export function Project() {
 				</div>
 				<div>
 					{project?.stepIds.map((stepId, stepNum) => (
-						<Step key={stepId} stepId={stepId} stepNum={stepNum} />
+						<Step
+							key={stepId}
+							stepId={stepId}
+							stepNum={stepNum + 1}
+						/>
 					))}
 				</div>
 			</div>
