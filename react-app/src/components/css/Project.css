@@ -15,13 +15,19 @@
 }
 
 .project_project-support-image {
-	height: 200px;
-	width: 200px;
+	height: 300px;
+	width: 300px;
 	object-fit: cover;
+}
+
+.project_username {
+	margin: 5px;
 }
 
 .project_description {
 	text-align: center;
+	margin: 17px;
+	margin-bottom: 35px;
 }
 
 .project_edit-btn {

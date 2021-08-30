@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSomeStep_Supports } from "../store/step_supports";
+import "./css/Step.css";
 
 export function Step({ stepId, stepNum }) {
 	const step = useSelector((state) => state.steps[stepId]);
@@ -20,8 +21,8 @@ export function Step({ stepId, stepNum }) {
 	}, [dispatch, step]);
 
 	return (
-		<div>
-			<h3>
+		<div className="project_content-container">
+			<h3 className="step_header">
 				Step {stepNum}: {step?.title}
 			</h3>
 			<div className="project_project-support-images_container">
@@ -37,7 +38,7 @@ export function Step({ stepId, stepNum }) {
 					) : null
 				)}
 			</div>
-			<div>{step?.instruction}</div>
+			<div className="step_instruction">{step?.instruction}</div>
 		</div>
 	);
 }
