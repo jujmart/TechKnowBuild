@@ -23,3 +23,21 @@
 .project_description {
 	text-align: center;
 }
+
+.project_edit-btn {
+	background-color: orange;
+	border-style: unset;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 4px 8px;
+	margin: 3px 5px;
+}
+
+.project_delete-btn {
+	background-color: red;
+	border-style: unset;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 4px 8px;
+	margin: 3px 5px;
+}

@@ -44,8 +44,18 @@ export function Project() {
 				<h1 className="project_title">{project?.title}</h1>
 				{user?.id === project?.userId && (
 					<div>
-						<button onClick={handleEditProject}>Edit</button>
-						<button onClick={handleDeleteProject}>Delete</button>
+						<button
+							onClick={handleEditProject}
+							className="project_edit-btn"
+						>
+							Edit
+						</button>
+						<button
+							onClick={handleDeleteProject}
+							className="project_delete-btn"
+						>
+							Delete
+						</button>
 					</div>
 				)}
 				<div className="project_username">By {project?.username}</div>
