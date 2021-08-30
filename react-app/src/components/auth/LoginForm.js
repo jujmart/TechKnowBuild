@@ -35,11 +35,15 @@ const LoginForm = () => {
 	return (
 		<form onSubmit={onLogin} className="login_form">
 			<h2 className="login_form-header">Log In!</h2>
-			<div>
-				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
-				))}
-			</div>
+			{errors.length ? (
+				<ul className="errors-ul">
+					{errors.map((error, ind) => (
+						<li key={ind} className="errors-li">
+							{error}
+						</li>
+					))}
+				</ul>
+			) : null}
 			<input
 				name="email"
 				type="email"
