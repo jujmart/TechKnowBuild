@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Modal } from "../context/Modal";
-import { setClose, setShowDeleteConfirm } from "../store/modal";
+import { setClose, setShowDeleteProjectConfirm } from "../store/modal";
 import { getProjectById } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
 import { getSomeSteps } from "../store/steps";
-import { DeleteConfirmForm } from "./DeleteConfirmForm";
+import { DeleteProjectConfirmForm } from "./DeleteProjectConfirmForm";
 import { Step } from "./Step";
 import { StepForm } from "./StepForm";
 
@@ -16,7 +16,7 @@ export function Project() {
 	const { projectId } = useParams();
 	const project = useSelector((state) => state.projects[projectId]);
 	const project_supports = useSelector((state) => state.project_supports);
-	const deleteConfirm = useSelector((state) => state.modal.delete);
+	const deleteConfirm = useSelector((state) => state.modal.deleteProject);
 	const user = useSelector((state) => state.session.user);
 	const [showStepForm, setShowStepForm] = useState(false);
 	const [currentStepIds, setCurrentStepIds] = useState([]);
@@ -78,14 +78,18 @@ export function Project() {
 							Edit
 						</button>
 						<button
-							onClick={() => dispatch(setShowDeleteConfirm())}
+							onClick={() =>
+								dispatch(setShowDeleteProjectConfirm())
+							}
 							className="project_delete-btn"
 						>
 							Delete
 						</button>
 						{deleteConfirm ? (
 							<Modal onClose={() => dispatch(setClose())}>
-								<DeleteConfirmForm projectId={projectId} />
+								<DeleteProjectConfirmForm
+									projectId={projectId}
+								/>
 							</Modal>
 						) : null}
 					</div>

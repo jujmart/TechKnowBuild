@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Modal } from "../context/Modal";
+import { setClose, setShowDeleteStepConfirm } from "../store/modal";
 import { getSomeStep_Supports } from "../store/step_supports";
+import { DeleteStepConfirmForm } from "./DeleteStepConfirmForm";
+
 import "./css/Step.css";
 
 export function Step({ stepId, stepNum }) {
+	const { projectId } = useParams();
 	const step = useSelector((state) => state.steps[stepId]);
 	const step_supports = useSelector((state) => state.step_supports);
+	const user = useSelector((state) => state.session.user);
+	const project = useSelector((state) => state.projects[projectId]);
+	const deleteConfirm = useSelector((state) => state.modal.deleteStep);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -27,6 +36,27 @@ export function Step({ stepId, stepNum }) {
 			<h3 className="step_header">
 				Step {stepNum}: {step?.title}
 			</h3>
+			{user?.id === project?.userId && (
+				<div>
+					<button
+						// onClick={handleEditStep}
+						className="project_edit-btn"
+					>
+						Edit
+					</button>
+					<button
+						onClick={() => dispatch(setShowDeleteStepConfirm())}
+						className="project_delete-btn"
+					>
+						Delete
+					</button>
+					{deleteConfirm ? (
+						<Modal onClose={() => dispatch(setClose())}>
+							<DeleteStepConfirmForm stepId={stepId} />
+						</Modal>
+					) : null}
+				</div>
+			)}
 			<div className="project_project-support-images_container">
 				{step?.step_supportIds.map((stepSupportId) =>
 					step_supports[stepSupportId]?.stepSupportType ===

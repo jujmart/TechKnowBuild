@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { setClose } from "../store/modal";
 import { deleteProjectThunk } from "../store/projects";
 
-export function DeleteConfirmForm({ projectId }) {
+export function DeleteProjectConfirmForm({ projectId }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
