@@ -1,10 +1,16 @@
 // constants
 const SET_STEPS = "steps/SET_STEPS";
+const ADD_STEP = "steps/ADD_STEP";
 // const UPDATE_PROJECT_SUPPORT = "project_supports/UPDATE_PROJECT_SUPPORT";
 
 const setSteps = (steps) => ({
 	type: SET_STEPS,
 	steps,
+});
+
+const addStep = (step) => ({
+	type: ADD_STEP,
+	step,
 });
 
 // export const updateProject_Support = (project_support) => ({
@@ -28,6 +34,40 @@ export const getSomeSteps = (stepIds) => async (dispatch) => {
 	}
 };
 
+export const createStepThunk = (imageData, data) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/steps/`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+
+		if (imageData) {
+			const AWSResponse = await fetch(
+				`/api/step_supports/AWS/${SQLdata.stepId}`,
+				{
+					method: "POST",
+					body: imageData,
+				}
+			);
+
+			if (AWSResponse.ok) {
+				const AWSData = await AWSResponse.json();
+				if (AWSData.errors) {
+					return AWSData;
+				}
+				dispatch(addStep_Support(AWSData.stepSupport));
+			}
+		}
+		dispatch(addStep(SQLdata.step));
+	}
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -39,6 +79,10 @@ export default function reducer(state = initialState, action) {
 				newSetState[step.id] = step;
 			});
 			return newSetState;
+		case ADD_STEP:
+			const newAddState = { ...state };
+			newAddState[action.step.id] = action.step;
+			return newAddState;
 		// case UPDATE_PROJECT_SUPPORT:
 		// 	const newUpdateState = { ...state };
 		// 	newUpdateState[action.project_support.id] = action.project_support;

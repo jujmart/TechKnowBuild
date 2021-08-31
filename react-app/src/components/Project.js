@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Modal } from "../context/Modal";
@@ -6,9 +6,11 @@ import { setClose, setShowDeleteConfirm } from "../store/modal";
 import { getProjectById } from "../store/projects";
 import { getSomeProject_Supports } from "../store/project_supports";
 import { getSomeSteps } from "../store/steps";
-import "./css/Project.css";
 import { DeleteConfirmForm } from "./DeleteConfirmForm";
 import { Step } from "./Step";
+import { StepForm } from "./StepForm";
+
+import "./css/Project.css";
 
 export function Project() {
 	const { projectId } = useParams();
@@ -16,6 +18,7 @@ export function Project() {
 	const project_supports = useSelector((state) => state.project_supports);
 	const deleteConfirm = useSelector((state) => state.modal.delete);
 	const user = useSelector((state) => state.session.user);
+	const [showStepForm, setShowStepForm] = useState(false);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -105,6 +108,16 @@ export function Project() {
 						/>
 					))}
 				</div>
+				{!showStepForm ? (
+					<button
+						onClick={() => setShowStepForm(true)}
+						className="step_add-btn"
+					>
+						Add a step
+					</button>
+				) : (
+					<StepForm setShowStepForm={setShowStepForm} />
+				)}
 			</div>
 		</div>
 	);
