@@ -16,8 +16,8 @@ export function setShowDeleteProjectConfirm() {
 	return { type: SHOW_DELETE_PROJECT_CONFIRM };
 }
 
-export function setShowDeleteStepConfirm() {
-	return { type: SHOW_DELETE_STEP_CONFIRM };
+export function setShowDeleteStepConfirm(id) {
+	return { type: SHOW_DELETE_STEP_CONFIRM, id };
 }
 
 export function setClose() {
@@ -60,7 +60,7 @@ export default function modalReducer(state = initialState, action) {
 				login: null,
 				signup: null,
 				deleteProject: null,
-				deleteStep: true,
+				deleteStep: action.id,
 			};
 		case CLOSE:
 			return {

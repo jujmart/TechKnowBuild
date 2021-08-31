@@ -120,6 +120,7 @@ export function Project() {
 							key={stepId}
 							stepId={stepId}
 							stepNum={stepNum + 1}
+							setCurrentStepIds={setCurrentStepIds}
 						/>
 					))}
 				</div>

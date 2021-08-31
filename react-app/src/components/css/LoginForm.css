@@ -48,6 +48,12 @@
 	text-align: center;
 }
 
+.delete_form-header {
+	margin-bottom: 10px;
+	text-align: center;
+	white-space: pre-wrap;
+}
+
 /* .delete-confirm_button-container {
 	display: flex;
 	justify-items: flex-start;

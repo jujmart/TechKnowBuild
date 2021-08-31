@@ -8,7 +8,7 @@ import { DeleteStepConfirmForm } from "./DeleteStepConfirmForm";
 
 import "./css/Step.css";
 
-export function Step({ stepId, stepNum }) {
+export function Step({ stepId, stepNum, setCurrentStepIds }) {
 	const { projectId } = useParams();
 	const step = useSelector((state) => state.steps[stepId]);
 	const step_supports = useSelector((state) => state.step_supports);
@@ -45,14 +45,19 @@ export function Step({ stepId, stepNum }) {
 						Edit
 					</button>
 					<button
-						onClick={() => dispatch(setShowDeleteStepConfirm())}
+						onClick={() =>
+							dispatch(setShowDeleteStepConfirm(stepId))
+						}
 						className="project_delete-btn"
 					>
 						Delete
 					</button>
-					{deleteConfirm ? (
+					{deleteConfirm === stepId ? (
 						<Modal onClose={() => dispatch(setClose())}>
-							<DeleteStepConfirmForm stepId={stepId} />
+							<DeleteStepConfirmForm
+								stepId={stepId}
+								setCurrentStepIds={setCurrentStepIds}
+							/>
 						</Modal>
 					) : null}
 				</div>
