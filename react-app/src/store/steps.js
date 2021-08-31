@@ -64,9 +64,11 @@ export const createStepThunk = (imageData, data) => async (dispatch) => {
 					return AWSData;
 				}
 				dispatch(addStep_Supports([AWSData.stepSupport]));
+				SQLdata.step.step_supportIds.push(AWSData.stepSupport.id);
 			}
 		}
 		dispatch(addStep(SQLdata.step));
+		return SQLdata.step;
 	}
 };
 

@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProjectById } from "../store/projects";
 import { createStepThunk } from "../store/steps";
 
 import "./css/StepForm.css";
 
-export function StepForm({ setShowStepForm }) {
+export function StepForm({ setShowStepForm, setCurrentStepIds }) {
 	const dispatch = useDispatch();
 	const { projectId } = useParams();
 	const [title, setTitle] = useState("");
@@ -39,10 +38,10 @@ export function StepForm({ setShowStepForm }) {
 		};
 
 		const response = await dispatch(createStepThunk(imageData, stepData));
-		if (response) {
+		if (response.errors) {
 			setErrors(response.errors);
 		} else {
-			dispatch(getProjectById(projectId));
+			setCurrentStepIds((prevState) => [...prevState, response.id]);
 			setShowStepForm(false);
 		}
 	}

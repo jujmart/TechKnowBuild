@@ -19,6 +19,7 @@ export function Project() {
 	const deleteConfirm = useSelector((state) => state.modal.delete);
 	const user = useSelector((state) => state.session.user);
 	const [showStepForm, setShowStepForm] = useState(false);
+	const [currentStepIds, setCurrentStepIds] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -57,6 +58,12 @@ export function Project() {
 			}
 		}
 	}, [dispatch, project]);
+
+	useEffect(() => {
+		if (project) {
+			setCurrentStepIds(project.stepIds);
+		}
+	}, [project]);
 
 	return (
 		<div className="project_container">
@@ -104,7 +111,7 @@ export function Project() {
 					{project?.description}
 				</div>
 				<div className="step_container">
-					{project?.stepIds.map((stepId, stepNum) => (
+					{currentStepIds.map((stepId, stepNum) => (
 						<Step
 							key={stepId}
 							stepId={stepId}
@@ -120,7 +127,10 @@ export function Project() {
 						Add a step
 					</button>
 				) : (
-					<StepForm setShowStepForm={setShowStepForm} />
+					<StepForm
+						setShowStepForm={setShowStepForm}
+						setCurrentStepIds={setCurrentStepIds}
+					/>
 				)}
 			</div>
 		</div>
