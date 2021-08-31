@@ -61,6 +61,11 @@ def delete_project(id):
             project_support_url = project_support.projectSupportUrl
             if "AWS-Bucket" not in project_support_url:
                 delete_file_by_url(project_support_url)
+        for step in project.steps:
+            for step_support in step.step_supports:
+                step_support_url = step_support.stepSupportUrl
+                if "AWS-Bucket" not in step_support_url:
+                    delete_file_by_url(step_support_url)
         db.session.delete(project)
         db.session.commit()
     return {}
