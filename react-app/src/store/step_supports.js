@@ -2,7 +2,7 @@
 const ADD_STEP_SUPPORTS = "step_supports/ADD_STEP_SUPPORTS";
 // const UPDATE_PROJECT_SUPPORT = "project_supports/UPDATE_PROJECT_SUPPORT";
 
-const addStep_Supports = (step_supports) => ({
+export const addStep_Supports = (step_supports) => ({
 	type: ADD_STEP_SUPPORTS,
 	step_supports,
 });

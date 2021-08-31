@@ -14,35 +14,35 @@ def get_some_step_supports():
     return {'step_supports': [step_support.to_dict() for step_support in step_supports]}
 
 
-# @project_support_routes.route("/AWS/<int:id>", methods=['POST'])
-# @login_required
-# def create_project_support_with_aws(id):
+@step_support_routes.route("/AWS/<int:id>", methods=['POST'])
+@login_required
+def create_step_support_with_aws(id):
 
-#     if "image" not in request.files:
-#         return {"errors": ["Project image required"]}
+    if "image" not in request.files:
+        return {"errors": ["Step image required"]}
 
-#     projectImage = request.files['image']
+    stepImage = request.files['image']
 
-#     if not allowed_file(projectImage.filename):
-#         return {"errors": ["File type not permitted"]}
+    if not allowed_file(stepImage.filename):
+        return {"errors": ["File type not permitted"]}
 
-#     projectImage.filename = get_unique_filename(projectImage.filename)
-#     projectImageUpload = upload_file_to_s3(projectImage)
+    stepImage.filename = get_unique_filename(stepImage.filename)
+    stepImageUpload = upload_file_to_s3(stepImage)
 
-#     if "url" not in projectImageUpload:
-#         return projectImageUpload
+    if "url" not in stepImageUpload:
+        return stepImageUpload
 
-#     projectImageUrl = projectImageUpload["url"]
+    stepImageUrl = stepImageUpload["url"]
 
-#     project_support = Project_Support(
-#         projectId=id,
-#         projectSupportType="image",
-#         projectSupportUrl=projectImageUrl,
-#     )
-#     db.session.add(project_support)
-#     db.session.commit()
+    step_support = Step_Support(
+        stepId=id,
+        stepSupportType="image",
+        stepSupportUrl=stepImageUrl,
+    )
+    db.session.add(step_support)
+    db.session.commit()
 
-#     return {}
+    return {"stepSupport": step_support.to_dict()}
 
 
 # @project_support_routes.route("/AWS/<int:id>", methods=['PUT'])

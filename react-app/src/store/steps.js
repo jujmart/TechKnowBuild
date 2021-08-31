@@ -1,3 +1,5 @@
+import { addStep_Supports } from "./step_supports";
+
 // constants
 const SET_STEPS = "steps/SET_STEPS";
 const ADD_STEP = "steps/ADD_STEP";
@@ -49,7 +51,7 @@ export const createStepThunk = (imageData, data) => async (dispatch) => {
 
 		if (imageData) {
 			const AWSResponse = await fetch(
-				`/api/step_supports/AWS/${SQLdata.stepId}`,
+				`/api/step_supports/AWS/${SQLdata.step.id}`,
 				{
 					method: "POST",
 					body: imageData,
@@ -61,7 +63,7 @@ export const createStepThunk = (imageData, data) => async (dispatch) => {
 				if (AWSData.errors) {
 					return AWSData;
 				}
-				dispatch(addStep_Support(AWSData.stepSupport));
+				dispatch(addStep_Supports([AWSData.stepSupport]));
 			}
 		}
 		dispatch(addStep(SQLdata.step));

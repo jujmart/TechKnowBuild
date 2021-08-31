@@ -16,7 +16,9 @@ export function Step({ stepId, stepNum }) {
 					step_supportIds.push(step_supportId);
 				}
 			});
-			dispatch(getSomeStep_Supports(step_supportIds));
+			if (step_supportIds.length) {
+				dispatch(getSomeStep_Supports(step_supportIds));
+			}
 		}
 	}, [dispatch, step]);
 

@@ -38,7 +38,9 @@ export function Project() {
 					project_supportIds.push(project_supportId);
 				}
 			});
-			dispatch(getSomeProject_Supports(project_supportIds));
+			if (project_supportIds.length) {
+				dispatch(getSomeProject_Supports(project_supportIds));
+			}
 		}
 	}, [dispatch, project]);
 
@@ -50,7 +52,9 @@ export function Project() {
 					stepIds.push(stepId);
 				}
 			});
-			dispatch(getSomeSteps(stepIds));
+			if (stepIds.length) {
+				dispatch(getSomeSteps(stepIds));
+			}
 		}
 	}, [dispatch, project]);
 
