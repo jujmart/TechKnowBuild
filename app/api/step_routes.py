@@ -48,18 +48,18 @@ def create_step():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-# @project_routes.route('/<int:id>', methods=["DELETE"])
-# @login_required
-# def delete_project(id):
-#     project = Project.query.get_or_404(id)
-#     if project.userId == current_user.id:
-#         for project_support in project.project_supports:
-#             project_support_url = project_support.projectSupportUrl
-#             if "AWS-Bucket" not in project_support_url:
-#                 delete_file_by_url(project_support_url)
-#         db.session.delete(project)
-#         db.session.commit()
-#     return {}
+@step_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_step(id):
+    step = Step.query.get_or_404(id)
+    if step.project.userId == current_user.id:
+        for step_support in step.step_supports:
+            step_support_url = step_support.stepSupportUrl
+            if "AWS-Bucket" not in step_support_url:
+                delete_file_by_url(step_support_url)
+        db.session.delete(step)
+        db.session.commit()
+    return {}
 
 
 # @project_routes.route('/<int:project_id>/categories/<int:category_id>', methods=["PUT"])

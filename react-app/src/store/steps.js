@@ -72,6 +72,19 @@ export const createStepThunk = (imageData, data) => async (dispatch) => {
 	}
 };
 
+export const deleteStepThunk = (stepId) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/steps/${stepId}`, {
+		method: "DELETE",
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+	}
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
