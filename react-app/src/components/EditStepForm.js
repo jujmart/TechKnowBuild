@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editStepThunk } from "../store/steps";
 
 import "./css/StepForm.css";
 
-export function EditStepForm({ setShowStepForm, setCurrentStepIds }) {
+export function EditStepForm({ stepId, setShowEditStep }) {
 	const dispatch = useDispatch();
 	const { projectId } = useParams();
-	const [title, setTitle] = useState("");
-	const [instruction, setInstruction] = useState("");
+	const step = useSelector((state) => state.steps[stepId]);
+	const [title, setTitle] = useState(step.title);
+	const [instruction, setInstruction] = useState(step.instruction);
 	const [stepSupport, setStepSupport] = useState(null);
 	const [errors, setErrors] = useState([]);
 
@@ -37,19 +38,20 @@ export function EditStepForm({ setShowStepForm, setCurrentStepIds }) {
 			projectId,
 		};
 
-		const response = await dispatch(editStepThunk(imageData, stepData));
+		const response = await dispatch(
+			editStepThunk(imageData, stepData, stepId)
+		);
 		if (response.errors) {
 			setErrors(response.errors);
 		} else {
-			setCurrentStepIds((prevState) => [...prevState, response.id]);
-			setShowStepForm(false);
+			setShowEditStep(0);
 		}
 	}
 
 	return (
 		<div className="project-form_form-container">
 			<div className="step-form_form">
-				<h1 className="project-form_header">Add a step</h1>
+				<h1 className="project-form_header">Update Step</h1>
 				{errors.length ? (
 					<ul className="errors-ul">
 						{errors.map((error) => (
@@ -88,11 +90,11 @@ export function EditStepForm({ setShowStepForm, setCurrentStepIds }) {
 						onChange={(e) => setStepSupport(e.target.files[0])}
 					/>
 				</div>
-				<button onClick={handleSubmit} className="step-form_submit-btn">
-					Add Step
+				<button onClick={handleSubmit} className="step-form_update-btn">
+					Update Step
 				</button>
 				<button
-					onClick={() => setShowStepForm(false)}
+					onClick={() => setShowEditStep(0)}
 					className="step-form_cancel-btn"
 				>
 					Cancel

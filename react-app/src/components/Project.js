@@ -124,19 +124,20 @@ export function Project() {
 						/>
 					))}
 				</div>
-				{!showStepForm ? (
-					<button
-						onClick={() => setShowStepForm(true)}
-						className="step_add-btn"
-					>
-						Add a step
-					</button>
-				) : (
-					<StepForm
-						setShowStepForm={setShowStepForm}
-						setCurrentStepIds={setCurrentStepIds}
-					/>
-				)}
+				{user?.id === project?.userId &&
+					(!showStepForm ? (
+						<button
+							onClick={() => setShowStepForm(true)}
+							className="step_add-btn"
+						>
+							Add a step
+						</button>
+					) : (
+						<StepForm
+							setShowStepForm={setShowStepForm}
+							setCurrentStepIds={setCurrentStepIds}
+						/>
+					))}
 			</div>
 		</div>
 	);

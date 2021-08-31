@@ -85,6 +85,53 @@ export const deleteStepThunk = (stepId) => async (dispatch) => {
 	}
 };
 
+export const editStepThunk = (imageData, data, stepId) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/steps/${stepId}`, {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+
+		if (imageData) {
+			let AWSResponse;
+			if (SQLdata.step.step_supportIds[0]) {
+				AWSResponse = await fetch(
+					`/api/step_supports/AWS/${SQLdata.step.step_supportIds[0]}`,
+					{
+						method: "PUT",
+						body: imageData,
+					}
+				);
+			} else {
+				AWSResponse = await fetch(
+					`/api/step_supports/AWS/${SQLdata.step.id}`,
+					{
+						method: "POST",
+						body: imageData,
+					}
+				);
+			}
+
+			if (AWSResponse.ok) {
+				const AWSData = await AWSResponse.json();
+				if (AWSData.errors) {
+					return AWSData;
+				}
+				dispatch(addStep_Supports([AWSData.stepSupport]));
+				SQLdata.step.step_supportIds = [AWSData.stepSupport.id];
+			}
+		}
+		dispatch(addStep(SQLdata.step));
+		return SQLdata.step;
+	}
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

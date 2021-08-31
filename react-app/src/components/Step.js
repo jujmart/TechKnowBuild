@@ -33,53 +33,59 @@ export function Step({ stepId, stepNum, setCurrentStepIds }) {
 		}
 	}, [dispatch, step]);
 
-	return showEditStep !== stepId ? (
-		<div div className="project_content-container">
-			<h3 className="step_header">
-				Step {stepNum}: {step?.title}
-			</h3>
-			{user?.id === project?.userId && (
-				<div className="step_btn-container">
-					<button
-						onClick={() => setShowEditStep(true)}
-						className="project_edit-btn"
-					>
-						Edit
-					</button>
-					<button
-						onClick={() =>
-							dispatch(setShowDeleteStepConfirm(stepId))
-						}
-						className="project_delete-btn"
-					>
-						Delete
-					</button>
-					{deleteConfirm === stepId ? (
-						<Modal onClose={() => dispatch(setClose())}>
-							<DeleteStepConfirmForm
-								stepId={stepId}
-								setCurrentStepIds={setCurrentStepIds}
-							/>
-						</Modal>
-					) : null}
-				</div>
-			)}
-			<div className="project_project-support-images_container">
-				{step?.step_supportIds.map((stepSupportId) =>
-					step_supports[stepSupportId]?.stepSupportType ===
-					"image" ? (
-						<img
-							className="project_project-support-image"
-							src={step_supports[stepSupportId]?.stepSupportUrl}
-							alt="Step Img"
-							key={stepSupportId}
-						/>
-					) : null
+	if (showEditStep !== stepId) {
+		return (
+			<div className="project_content-container">
+				<h3 className="step_header">
+					Step {stepNum}: {step?.title}
+				</h3>
+				{user?.id === project?.userId && (
+					<div className="step_btn-container">
+						<button
+							onClick={() => setShowEditStep(stepId)}
+							className="project_edit-btn"
+						>
+							Edit
+						</button>
+						<button
+							onClick={() =>
+								dispatch(setShowDeleteStepConfirm(stepId))
+							}
+							className="project_delete-btn"
+						>
+							Delete
+						</button>
+						{deleteConfirm === stepId ? (
+							<Modal onClose={() => dispatch(setClose())}>
+								<DeleteStepConfirmForm
+									stepId={stepId}
+									setCurrentStepIds={setCurrentStepIds}
+								/>
+							</Modal>
+						) : null}
+					</div>
 				)}
+				<div className="project_project-support-images_container">
+					{step?.step_supportIds.map((stepSupportId) =>
+						step_supports[stepSupportId]?.stepSupportType ===
+						"image" ? (
+							<img
+								className="project_project-support-image"
+								src={
+									step_supports[stepSupportId]?.stepSupportUrl
+								}
+								alt="Step Img"
+								key={stepSupportId}
+							/>
+						) : null
+					)}
+				</div>
+				<div className="step_instruction">{step?.instruction}</div>
 			</div>
-			<div className="step_instruction">{step?.instruction}</div>
-		</div>
-	) : (
-		<EditStepForm />
-	);
+		);
+	} else {
+		return (
+			<EditStepForm stepId={stepId} setShowEditStep={setShowEditStep} />
+		);
+	}
 }

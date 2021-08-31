@@ -49,7 +49,7 @@ export function StepForm({ setShowStepForm, setCurrentStepIds }) {
 	return (
 		<div className="project-form_form-container">
 			<div className="step-form_form">
-				<h1 className="project-form_header">Add a step</h1>
+				<h1 className="project-form_header">Add a Step</h1>
 				{errors.length ? (
 					<ul className="errors-ul">
 						{errors.map((error) => (

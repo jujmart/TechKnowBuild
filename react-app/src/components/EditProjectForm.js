@@ -132,7 +132,7 @@ export function EditProjectForm() {
 						onChange={(e) => setProjectSupport(e.target.files[0])}
 					/>{" "}
 				</div>
-				<button className="project-form_submit-btn">
+				<button className="project-form_update-btn">
 					Update Project
 				</button>
 			</form>
