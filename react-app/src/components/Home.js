@@ -39,7 +39,9 @@ export function Home() {
 					}
 				});
 			});
-			dispatch(getSomeProject_Supports(project_supportIds));
+			if (project_supportIds.length) {
+				dispatch(getSomeProject_Supports(project_supportIds));
+			}
 		}
 	}, [dispatch, projects]);
 

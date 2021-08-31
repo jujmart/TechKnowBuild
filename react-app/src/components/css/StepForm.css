@@ -1,0 +1,29 @@
+.step-form_form {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	max-width: 80%;
+	padding: 30px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	margin-top: 15px;
+}
+
+.step-form_submit-btn {
+	padding: 5px;
+	margin-top: 5px;
+	background-color: blue;
+	color: white;
+	border-style: unset;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.step-form_cancel-btn {
+	padding: 5px;
+	margin-top: 10px;
+	background-color: yellow;
+	border-style: unset;
+	border-radius: 5px;
+	cursor: pointer;
+}
