@@ -45,32 +45,32 @@ def create_step_support_with_aws(id):
     return {"stepSupport": step_support.to_dict()}
 
 
-# @project_support_routes.route("/AWS/<int:id>", methods=['PUT'])
-# @login_required
-# def edit_project_support_with_aws(id):
+@step_support_routes.route("/AWS/<int:id>", methods=['PUT'])
+@login_required
+def edit_step_support_with_aws(id):
 
-#     if "image" not in request.files:
-#         return {"errors": ["Projecct image required"]}
+    if "image" not in request.files:
+        return {"errors": ["Step image required"]}
 
-#     projectImage = request.files['image']
+    stepImage = request.files['image']
 
-#     if not allowed_file(projectImage.filename):
-#         return {"errors": ["File type not permitted"]}
+    if not allowed_file(stepImage.filename):
+        return {"errors": ["File type not permitted"]}
 
-#     projectImage.filename = get_unique_filename(projectImage.filename)
-#     projectImageUpload = upload_file_to_s3(projectImage)
+    stepImage.filename = get_unique_filename(stepImage.filename)
+    stepImageUpload = upload_file_to_s3(stepImage)
 
-#     project_support = Project_Support.query.get_or_404(id)
-#     project_support_url = project_support.projectSupportUrl
-#     if "AWS-Bucket" not in project_support_url:
-#         delete_file_by_url(project_support_url)
+    if "url" not in stepImageUpload:
+        return stepImageUpload
 
-#     if "url" not in projectImageUpload:
-#         return projectImageUpload
+    stepImageUrl = stepImageUpload["url"]
 
-#     projectImageUrl = projectImageUpload["url"]
+    step_support = Step_Support.query.get_or_404(id)
+    step_support_url = step_support.stepSupportUrl
+    if "AWS-Bucket" not in step_support_url:
+        delete_file_by_url(step_support_url)
 
-#     project_support.projectSupportUrl = projectImageUrl
-#     db.session.commit()
+    step_support.stepSupportUrl = stepImageUrl
+    db.session.commit()
 
-#     return {"projectSupport": project_support.to_dict()}
+    return {"stepSupport": step_support.to_dict()}

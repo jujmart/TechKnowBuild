@@ -25,12 +25,6 @@ def get_some_steps():
     return {'steps': [step.to_dict() for step in steps]}
 
 
-# @project_routes.route('/<int:id>')
-# def get_project_by_id(id):
-#     project = Project.query.get_or_404(id)
-#     return {'project': project.to_dict()}
-
-
 @step_routes.route('/', methods=["POST"])
 @login_required
 def create_step():
@@ -62,19 +56,15 @@ def delete_step(id):
     return {}
 
 
-# @project_routes.route('/<int:project_id>/categories/<int:category_id>', methods=["PUT"])
-# @login_required
-# def edit_project(project_id, category_id):
-#     if (category_id == 0):
-#         return {'errors': ["Please select a category"]}
-#     form = ProjectForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         project = Project.query.get_or_404(project_id)
-#         project.title = form.data["title"]
-#         project.description = form.data["description"]
-#         category = Category.query.get_or_404(category_id)
-#         project.categories = [category]
-#         db.session.commit()
-#         return {'projectSupportId': project.project_supports[0].id}
-#     return {'errors': validation_errors_to_error_messages(form.errors)}
+@step_routes.route('/<int:step_id>', methods=["PUT"])
+@login_required
+def edit_step(step_id):
+    form = StepForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        step = Step.query.get_or_404(step_id)
+        step.title = form.data["title"]
+        step.instruction = form.data["instruction"]
+        db.session.commit()
+        return {'step': step.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}

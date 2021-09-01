@@ -56,3 +56,12 @@
 	border-radius: 5px;
 	cursor: pointer;
 }
+
+.project-form_update-btn {
+	padding: 5px;
+	margin-top: 5px;
+	background-color: orange;
+	border-style: unset;
+	border-radius: 5px;
+	cursor: pointer;
+}

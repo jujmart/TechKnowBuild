@@ -50,7 +50,7 @@ def create_project_support_with_aws(id):
 def edit_project_support_with_aws(id):
 
     if "image" not in request.files:
-        return {"errors": ["Projecct image required"]}
+        return {"errors": ["Project image required"]}
 
     projectImage = request.files['image']
 

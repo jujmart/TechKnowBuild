@@ -27,6 +27,8 @@ class Project(db.Model):
         "Comment", back_populates="project", cascade="all, delete-orphan")
 
     def to_dict(self):
+        stepIds = [step.id for step in self.steps]
+        stepIds.sort()
         return {
             'id': self.id,
             'userId': self.userId,
@@ -35,6 +37,6 @@ class Project(db.Model):
             'createdAt': self.createdAt,
             "categories": [category.name for category in self.categories],
             "project_supportIds": [project_support.id for project_support in self.project_supports],
-            "stepIds": [step.id for step in self.steps],
+            "stepIds": stepIds,
             "username": self.user.username
         }
