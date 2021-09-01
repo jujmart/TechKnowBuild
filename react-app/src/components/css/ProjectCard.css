@@ -21,6 +21,7 @@
 
 .project-card_username {
 	font-size: 13px;
+	color: gray;
 }
 
 .project-card_text-container {
@@ -30,4 +31,5 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: white;
 }

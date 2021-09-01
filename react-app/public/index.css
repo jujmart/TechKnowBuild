@@ -32,3 +32,14 @@
 	width: 30px;
 	padding-right: 3px;
 }
+
+html {
+	overflow-x: hidden;
+}
+
+input,
+textarea,
+select {
+	border-radius: 3px;
+	border-style: unset;
+}

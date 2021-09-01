@@ -10,8 +10,29 @@
 .home_container {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 .home_content_container {
 	width: 87.5%;
+}
+
+.home_splash {
+	text-align: center;
+	background-image: url("https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/favicon.jpeg");
+	color: white;
+	width: 100%;
+	height: 25vh;
+	background-size: cover;
+	margin-bottom: 20px;
+}
+
+.home_splash-header {
+	margin-bottom: 15px;
+}
+
+.home_splash-text {
+	white-space: pre-wrap;
+	margin-top: 10px;
 }

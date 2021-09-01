@@ -4,7 +4,7 @@ nav {
 	background-color: gray;
 	padding: 8px 5px;
 	position: sticky;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 	align-items: center;
 }
 
@@ -69,7 +69,7 @@ nav {
 }
 
 .navbar_create-project {
-	color: rgb(9, 92, 9);
+	color: rgb(8, 82, 8);
 	text-decoration: none;
 	padding: 0px 5px;
 	font-weight: 100;
