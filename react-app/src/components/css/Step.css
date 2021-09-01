@@ -10,6 +10,7 @@
 
 .step_instruction {
 	margin: 15px;
+	white-space: pre-wrap;
 }
 
 .step_add-btn {
