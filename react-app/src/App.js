@@ -9,7 +9,6 @@ import { Home } from "./components/Home";
 import { Project } from "./components/Project";
 import { ProjectForm } from "./components/CreateProjectForm";
 import { EditProjectForm } from "./components/EditProjectForm";
-import { About } from "./components/About";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -46,7 +45,6 @@ function App() {
 					<EditProjectForm />
 				</ProtectedRoute>
 			</Switch>
-			<About />
 		</BrowserRouter>
 	);
 }

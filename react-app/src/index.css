@@ -4,6 +4,15 @@
 	margin: 0px;
 }
 
+body {
+	min-height: 100vh;
+	position: relative;
+}
+
+#root {
+	padding-bottom: 90px;
+}
+
 .errors-ul {
 	background-color: rgb(192, 123, 123);
 	border-radius: 2px;
