@@ -23,16 +23,25 @@
 .project-form_title-input {
 	padding: 3px;
 	margin: 5px 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgray;
 }
 
 .project-form_description-input {
 	padding: 3px;
 	margin: 5px 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgray;
 }
 
 .project-form_category-input {
 	padding: 3px;
 	margin: 5px 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgray;
 }
 
 .project-form_project-image-div {

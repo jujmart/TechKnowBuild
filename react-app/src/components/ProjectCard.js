@@ -22,7 +22,10 @@ export function ProjectCard({ projectId }) {
 	return (
 		<div className="project-card_container">
 			{firstSupportId && (
-				<Link to={`/projects/${currentProject.id}`}>
+				<Link
+					to={`/projects/${currentProject.id}`}
+					className="project-card_link"
+				>
 					<img
 						className="project-card_image"
 						src={

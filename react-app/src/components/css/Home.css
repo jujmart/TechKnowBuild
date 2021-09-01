@@ -23,13 +23,14 @@
 	background-image: url("https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Profile-Photos/favicon.jpeg");
 	color: white;
 	width: 100%;
-	height: 25vh;
+	height: 30vh;
 	background-size: cover;
 	margin-bottom: 20px;
 }
 
 .home_splash-header {
 	margin-bottom: 15px;
+	margin-top: 10px;
 }
 
 .home_splash-text {

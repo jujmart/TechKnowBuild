@@ -15,6 +15,10 @@
 	object-fit: cover;
 }
 
+.project-card_link {
+	height: 200px;
+}
+
 .project-card_title {
 	font-weight: 900;
 }
