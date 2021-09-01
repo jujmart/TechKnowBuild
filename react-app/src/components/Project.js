@@ -138,6 +138,7 @@ export function Project() {
 							setCurrentStepIds={setCurrentStepIds}
 						/>
 					))}
+				<div className="project_comment-container"></div>
 			</div>
 		</div>
 	);
