@@ -25,3 +25,49 @@ body {
 	color: darkred;
 	padding: 1px 0px;
 }
+
+.footer_link-container {
+	background-color: gray;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 15px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+.footer_links {
+	color: white;
+	text-decoration: unset;
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+
+.footer_links:hover {
+	text-decoration: underline;
+}
+
+.footer_github-icon {
+	height: 30px;
+	width: 30px;
+	padding-right: 6px;
+}
+
+.footer_linkedin-icon {
+	height: 27px;
+	width: 30px;
+	padding-right: 3px;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+input,
+textarea,
+select {
+	border-radius: 3px;
+	border-style: unset;
+}
