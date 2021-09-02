@@ -1,5 +1,4 @@
 from app.models import db, Step_Support
-from app.seeds.steps import computer_step1, computer_step2, computer_step3, phone_step1, phone_step2, phone_step3, tablet_step1, tablet_step2, tablet_step3
 
 
 # Adds a demo user, you can add other users here if you want
@@ -20,21 +19,29 @@ def seed_step_supports():
         stepId=7, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Tablet1Photo1.jpeg")
     tablet_step2_support1 = Step_Support(
         stepId=8, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/Tablet2Photo1.jpeg")
+    logic_probe_step1_support1 = Step_Support(
+        stepId=10, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe1Photo1.jpeg")
+    logic_probe_step2_support1 = Step_Support(
+        stepId=11, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe2Photo1.jpeg")
+    logic_probe_step3_support1 = Step_Support(
+        stepId=12, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe3Photo1.jpeg")
+    logic_probe_step4_support1 = Step_Support(
+        stepId=13, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe4Photo1.jpeg")
+    logic_probe_step5_support1 = Step_Support(
+        stepId=14, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe5Photo1.jpeg")
+    logic_probe_step6_support1 = Step_Support(
+        stepId=15, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe6Photo1.jpeg")
+    logic_probe_step6_support2 = Step_Support(
+        stepId=15, stepSupportType="image", stepSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Step-Support/LogicProbe6Photo2.jpeg")
 
     support_list = [computer_step1_support1, computer_step1_support2, computer_step2_support1,
-                    phone_step1_support1, phone_step2_support1, phone_step2_support2, tablet_step1_support1, tablet_step2_support1]
+                    phone_step1_support1, phone_step2_support1, phone_step2_support2,
+                    tablet_step1_support1, tablet_step2_support1, logic_probe_step1_support1,
+                    logic_probe_step2_support1, logic_probe_step3_support1, logic_probe_step4_support1,
+                    logic_probe_step5_support1, logic_probe_step6_support1, logic_probe_step6_support2]
 
     for support in support_list:
         db.session.add(support)
-
-    # computer_step1.step_supports.extend(
-    #     [computer_step1_support1, computer_step1_support2])
-    # computer_step2.step_supports.extend([computer_step2_support1])
-    # phone_step1.step_supports.extend([phone_step1_support1])
-    # phone_step2.step_supports.extend(
-    #     [phone_step2_support1, phone_step2_support2])
-    # tablet_step1.step_supports.extend([tablet_step1_support1])
-    # tablet_step2.step_supports.extend([tablet_step2_support1])
 
     db.session.commit()
 
