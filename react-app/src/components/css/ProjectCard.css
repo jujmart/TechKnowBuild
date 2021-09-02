@@ -15,12 +15,17 @@
 	object-fit: cover;
 }
 
+.project-card_link {
+	height: 200px;
+}
+
 .project-card_title {
 	font-weight: 900;
 }
 
 .project-card_username {
 	font-size: 13px;
+	color: gray;
 }
 
 .project-card_text-container {
@@ -30,4 +35,5 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: white;
 }

@@ -7,6 +7,7 @@
 body {
 	min-height: 100vh;
 	position: relative;
+	background-color: rgb(47, 154, 187);
 }
 
 #root {

@@ -47,6 +47,19 @@ export function Home() {
 
 	return (
 		<div className="home_container">
+			<div className="home_splash">
+				<h1 className="home_splash-header">
+					Welcome to TechKnowBuild!
+				</h1>
+				<h2 className="home_splash-text">
+					Here you can find and share ways to make your favorite
+					technological items!
+				</h2>
+				<h3 className="home_splash-text">
+					Sharing your build is as easy as creating a project and
+					adding some build steps!
+				</h3>
+			</div>
 			<div className="home_content_container">
 				<h1>Explore Projects</h1>
 				{categories.map((category) => (

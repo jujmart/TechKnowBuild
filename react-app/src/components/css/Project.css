@@ -8,6 +8,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: 87.5%;
+	margin-top: 5px;
 }
 
 .project_project-support-images_container {
@@ -28,6 +29,7 @@
 	text-align: center;
 	margin: 17px;
 	margin-bottom: 35px;
+	white-space: pre-wrap;
 }
 
 .project_edit-btn {
