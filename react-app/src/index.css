@@ -71,3 +71,12 @@ select {
 	border-radius: 3px;
 	border-style: unset;
 }
+
+.page-not-found_container {
+	display: flex;
+	justify-content: center;
+}
+
+.page-not-found {
+	margin-top: 40px;
+}

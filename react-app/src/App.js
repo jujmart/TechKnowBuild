@@ -44,6 +44,13 @@ function App() {
 				<ProtectedRoute path="/edit-project/:projectId" exact={true}>
 					<EditProjectForm />
 				</ProtectedRoute>
+				<Route>
+					<div className="page-not-found_container">
+						<h1 className="page-not-found">
+							Page Not Found! Sorry!
+						</h1>
+					</div>
+				</Route>
 			</Switch>
 		</BrowserRouter>
 	);

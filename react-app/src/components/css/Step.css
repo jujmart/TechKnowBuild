@@ -13,6 +13,7 @@
 .step_instruction {
 	margin: 15px;
 	white-space: pre-wrap;
+	max-width: 1000px;
 }
 
 .step_add-btn {
