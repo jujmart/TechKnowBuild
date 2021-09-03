@@ -19,7 +19,7 @@ export function Home() {
 		if (categories.length) {
 			const projectIds = [];
 			categories.forEach((category) => {
-				for (let i = 0; i < 5; i++) {
+				for (let i = 0; i < category.projectIds.length; i++) {
 					if (!projectIds.includes(category.projectIds[i])) {
 						projectIds.push(category.projectIds[i]);
 					}
