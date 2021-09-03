@@ -13,6 +13,8 @@
 	height: 200px;
 	width: 100%;
 	object-fit: cover;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 .project-card_link {
