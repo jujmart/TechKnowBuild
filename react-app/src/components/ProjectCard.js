@@ -37,10 +37,15 @@ export function ProjectCard({ projectId }) {
 			)}
 			<div className="project-card_text-container">
 				<div className="project-card_title">
-					{currentProject?.title}
+					{currentProject?.title.length > 20
+						? currentProject?.title.slice(0, 20) + "..."
+						: currentProject?.title}
 				</div>
 				<div className="project-card_username">
-					By {currentProject?.username}
+					By{" "}
+					{currentProject?.username.length > 20
+						? currentProject?.username.slice(0, 20) + "..."
+						: currentProject?.username}
 				</div>
 			</div>
 		</div>
