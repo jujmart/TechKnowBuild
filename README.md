@@ -27,7 +27,7 @@ TechKnowBuild is an Instructables clone for people to find, share, and comment o
 -   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 -   <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
 -   <a href="https://alembic.sqlalchemy.org/">Alembic</a>
--   <a href="https://s3.console.aws.amazon.com/s3/home?region=us-east-2">S3 Amazon Web Services API</a>
+-   <a href="https://aws.amazon.com/s3/?hp=tile&so-exp=below&ct=fs">S3 Amazon Web Services API</a>
 
 ## Features
 
