@@ -27,41 +27,49 @@ TechKnowBuild is an Instructables clone for people to find, share, and comment o
 -   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 -   <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
 -   <a href="https://alembic.sqlalchemy.org/">Alembic</a>
+-   <a href="https://s3.console.aws.amazon.com/s3/home?region=us-east-2">S3 Amazon Web Services API</a>
 
 ## Features
 
-### Sign In and Sign Up
+### Log In and Sign Up
 
-![Sign Up](./readme-assets/images/signup.jpg)
-![Login](./readme-assets/images/login.jpg)
+![Sign Up](./readme-assets/images/signup.png)
+![Login](./readme-assets/images/login.png)
 
-### Feed Page
+### Home
 
-{app-name} feed displays all {resource-1-plural}
-Discover and search for new {resource-1-plural}
-![Feed Page](./readme-assets/images/feed.jpg)
+The TechKnowBuild home page displays all projects by category
+![Home Page](./readme-assets/images/home.png)
 
-### View {resource-1}
+### View Project and Steps
 
-Single {resource-1} of name, photos, {resource-2-plural}
-![{resource-1} Page](./readme-assets/images/{resource-1}-page.jpg)
+View of single project title, photos, description, and associated steps
+![Project Page](./readme-assets/images/project-page.png)
 
-### Add {resource-1}
+### Create Project
 
-Add a new {resource-1} to the database
-![Add {resource-1}](./readme-assets/images/{resource-1}-add.jpg)
-Cancel adding {resource-1}
-![Cancel Add {resource-1}](./readme-assets/images/{resource-1}-add-cancel.jpg)
+Add a new project to the site
+![Create Project](./readme-assets/images/project-create.png)
 
-### Create, Read, Update, Delete {resource-1} {resource-2-plural}
+### Edit Project
 
-View {resource-2-plural}
-![{resource-2-plural}](./readme-assets/images/{resource-2-plural}.png)
-Edit and Add {resource-2-plural} in the database
-![Edit {resource-2-plural}](./readme-assets/images/{resource-2-plural}-edit.png)
-![Add {resource-2-plural}](./readme-assets/images/{resource-2-plural}-add.png)
+Edit a project on the site
+![Edit Project](./readme-assets/images/project-edit.png)
 
--   Add any more features here
+### Create Step
+
+Create a step on the site
+![Create Step](./readme-assets/images/step-create.png)
+
+### Edit Step
+
+Edit a step on the site
+![Edit Step](./readme-assets/images/step-edit.png)
+
+### Delete Project/Step
+
+Delete a project or step on the site using the associated buttons
+![Delete](./readme-assets/images/delete.png)
 
 ## Installation
 
