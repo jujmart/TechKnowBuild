@@ -2,9 +2,9 @@
 
 TechKnowBuild is an Instructables clone for people to find, share, and comment on instructions for how to build different technological items, such as computers, phones, tablets, and even their components like microchips. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, PostgresSQL and other technologies.
 
--   View the <a href='https://techknowbuild.herokuapp.com/'>TechKnowBuild</a> App Live
+-   View the <a href='https://techknowbuild.herokuapp.com/' target="_blank">TechKnowBuild</a> App Live
 
--   Reference to the TechKnowBuild <a href='https://www.github.com/jujmart/TechKnowBuild/wiki'>Wiki Docs</a>
+-   Reference to the TechKnowBuild <a href='https://www.github.com/jujmart/TechKnowBuild/wiki' target="_blank">Wiki Docs</a>
 
 | Table of Contents                                                        |
 | ------------------------------------------------------------------------ |
@@ -17,17 +17,17 @@ TechKnowBuild is an Instructables clone for people to find, share, and comment o
 
 ## Technologies
 
--   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
--   <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL&logoColor=white" /></a>
--   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"></a>
--   <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"></a>
--   <a href="https://redux.js.org/"><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white"></a>
--   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3" /></a>
--   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=ffd343" /></a>
--   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
--   <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
--   <a href="https://alembic.sqlalchemy.org/">Alembic</a>
--   <a href="https://aws.amazon.com/s3/?hp=tile&so-exp=below&ct=fs">S3 Amazon Web Services (AWS) API</a>
+-   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
+-   <a href="https://www.postgresql.org/" target="_blank"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL&logoColor=white" /></a>
+-   <a href="https://nodejs.org/" target="_blank"><img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"></a>
+-   <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"></a>
+-   <a href="https://redux.js.org/" target="_blank"><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white"></a>
+-   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3" /></a>
+-   <a href="https://www.python.org/" target="_blank"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=ffd343" /></a>
+-   <a href="https://flask.palletsprojects.com/" target="_blank"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
+-   <a href="https://www.heroku.com/home" target="_blank"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
+-   <a href="https://alembic.sqlalchemy.org/" target="_blank">Alembic</a>
+-   <a href="https://aws.amazon.com/s3/?hp=tile&so-exp=below&ct=fs" target="_blank">S3 Amazon Web Services (AWS) API</a>
 
 ## Features
 
@@ -178,8 +178,8 @@ useEffect(() => {
 
 ### Justice Martin
 
-<a href="https://www.linkedin.com/in/justice-martin-34043340/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
-<a href="https://github.com/jujmart"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
+<a href="https://www.linkedin.com/in/justice-martin-34043340/" target="_blank"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/jujmart" target="_blank"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
 
 jujmart12@gmail.com
 
