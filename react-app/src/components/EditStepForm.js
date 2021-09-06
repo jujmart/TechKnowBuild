@@ -14,7 +14,7 @@ export function EditStepForm({ stepId, setShowEditStep }) {
 	const [stepSupport, setStepSupport] = useState(null);
 	const [errors, setErrors] = useState([]);
 
-	const imageFileExts = ["pdf", "png", "jpg", "jpeg", "gif"];
+	const imageFileExts = ["png", "jpg", "jpeg"];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -23,7 +23,7 @@ export function EditStepForm({ stepId, setShowEditStep }) {
 		if (stepSupport) {
 			const imageNameSplit = stepSupport.name.split(".");
 			const imageExt = imageNameSplit[imageNameSplit.length - 1];
-			if (!imageFileExts.includes(imageExt)) {
+			if (!imageFileExts.includes(imageExt.toLowerCase())) {
 				setErrors(["File type not permitted"]);
 				return;
 			}
@@ -86,7 +86,7 @@ export function EditStepForm({ stepId, setShowEditStep }) {
 						type="file"
 						name="step_support-image"
 						className="project-form_project-image-input"
-						accept=".pdf,.png,.jpg,.jpeg,.gif"
+						accept=".png,.jpg,.jpeg"
 						onChange={(e) => setStepSupport(e.target.files[0])}
 					/>
 				</div>

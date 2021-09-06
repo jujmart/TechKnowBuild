@@ -18,7 +18,7 @@ export function EditProjectForm() {
 	const project = useSelector((state) => state.projects[projectId]);
 	const user = useSelector((state) => state.session.user);
 
-	const imageFileExts = ["pdf", "png", "jpg", "jpeg", "gif"];
+	const imageFileExts = ["png", "jpg", "jpeg"];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -26,7 +26,7 @@ export function EditProjectForm() {
 		if (projectSupport) {
 			const imageNameSplit = projectSupport.name.split(".");
 			const imageExt = imageNameSplit[imageNameSplit.length - 1];
-			if (!imageFileExts.includes(imageExt)) {
+			if (!imageFileExts.includes(imageExt.toLowerCase())) {
 				setErrors(["File type not permitted"]);
 				return;
 			}
@@ -128,7 +128,7 @@ export function EditProjectForm() {
 						type="file"
 						name="project_support-image"
 						className="project-form_project-image-input"
-						accept=".pdf,.png,.jpg,.jpeg,.gif"
+						accept=".png,.jpg,.jpeg"
 						onChange={(e) => setProjectSupport(e.target.files[0])}
 					/>{" "}
 				</div>
