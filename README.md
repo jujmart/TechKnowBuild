@@ -1,14 +1,10 @@
-<p align='center'>
-  <img src='./readme-assets/images/logo.png' height='200px'>
-</p>
+# TechKnowBuild
 
-# {app-name}
+TechKnowBuild is an Instructables clone for people to find, share, and comment on instructions for how to build different technological items, such as computers, phones, tablets, and even their components like microchips. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, PostgresSQL and other technologies.
 
-{app-name} is a short description of the app. It is a fullstack React App made with a Redux state manager and a backend using Python, Flask, SQL-Alchemy, and PostgresSQL and any other technologies.
+-   View the <a href='https://techknowbuild.herokuapp.com/'>TechKnowBuild</a> App Live
 
--   View the <a href='https://{app-name}.herokuapp.com/'>{app-name}</a> App Live
-
--   Reference to the {app-name} <a href='https://www.github.com/{github-handle}/{app-name}/wiki'>Wiki Docs</a>
+-   Reference to the TechKnowBuild <a href='https://www.github.com/jujmart/TechKnowBuild/wiki'>Wiki Docs</a>
 
 | Table of Contents                                                        |
 | ------------------------------------------------------------------------ |
@@ -30,6 +26,7 @@
 -   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=ffd343" /></a>
 -   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 -   <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
+-   <a href="https://alembic.sqlalchemy.org/">Alembic</a>
 
 ## Features
 
@@ -73,7 +70,7 @@ To build/run project locally, please follow these steps:
 1. Clone this repository
 
 ```shell
-git clone https://github.com/{github-handle}/{app-name}.git
+git clone https://github.com/jujmart/TechKnowBuild.git
 ```
 
 2. Install Pipfile dependencies and create the virtual environment
@@ -99,25 +96,25 @@ npm install
 pipenv shell
 ```
 
-5. In the root folder, migrate tables to the database by running in the terminal:
+6. In the root folder, migrate tables to the database by running in the terminal:
 
 ```shell
 flask db upgrade
 ```
 
-6. In the root folder, seed the database by running in the terminal:
+7. In the root folder, seed the database by running in the terminal:
 
 ```shell
 flask seed all
 ```
 
-7. Start the flask backend in the `/` root directory
+8. Start the flask backend in the `/` root directory
 
 ```shell
 flask run
 ```
 
-8. Start the frontend in the `/react-app` directory
+9. Start the frontend in the `/react-app` directory
 
 ```shell
 npm start
@@ -153,11 +150,11 @@ print("add code snippet 1 here");
 
 ## Future Features
 
-1. **Search** - search through project titles to find the desired build
+1. **Search** - search through project titles to find the desired tech build
 
-2. **Youtube API** - project creators can house and show youtube videos as project or step support
+2. **Youtube API** - project creators can house and show youtube videos on the site to give additional support to a project or step
 
-3. **Multiple Image/Video Support Upload** - project creators can upload more than a single image or video as support for a project or step
+3. **Multiple File Upload** - project creators can add more than one image or video as support for their project or step
 
 ## Contact
 
