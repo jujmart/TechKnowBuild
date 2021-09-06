@@ -65,6 +65,10 @@ html {
 	overflow-x: hidden;
 }
 
+html * {
+	word-wrap: break-word;
+}
+
 input,
 textarea,
 select {
