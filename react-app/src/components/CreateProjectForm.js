@@ -15,7 +15,7 @@ export function ProjectForm() {
 	const [errors, setErrors] = useState([]);
 	const categories = useSelector((state) => state.categories);
 
-	const imageFileExts = ["pdf", "png", "jpg", "jpeg", "gif"];
+	const imageFileExts = ["png", "jpg", "jpeg"];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -27,7 +27,7 @@ export function ProjectForm() {
 
 		const imageNameSplit = projectSupport.name.split(".");
 		const imageExt = imageNameSplit[imageNameSplit.length - 1];
-		if (!imageFileExts.includes(imageExt)) {
+		if (!imageFileExts.includes(imageExt.toLowerCase())) {
 			setErrors(["File type not permitted"]);
 			return;
 		}
@@ -105,7 +105,7 @@ export function ProjectForm() {
 						name="project_support-image"
 						required
 						className="project-form_project-image-input"
-						accept=".pdf,.png,.jpg,.jpeg,.gif"
+						accept=".png,.jpg,.jpeg"
 						onChange={(e) => setProjectSupport(e.target.files[0])}
 					/>
 				</div>
