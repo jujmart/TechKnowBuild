@@ -27,7 +27,7 @@ TechKnowBuild is an Instructables clone for people to find, share, and comment o
 -   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 -   <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
 -   <a href="https://alembic.sqlalchemy.org/">Alembic</a>
--   <a href="https://aws.amazon.com/s3/?hp=tile&so-exp=below&ct=fs">S3 Amazon Web Services API</a>
+-   <a href="https://aws.amazon.com/s3/?hp=tile&so-exp=below&ct=fs">S3 Amazon Web Services (AWS) API</a>
 
 ## Features
 
@@ -130,30 +130,38 @@ npm start
 
 ## Technical Implementation Details
 
-### {Detail 1}
+### Updated Step Re-render
 
-Description 1
-
-Part of code is shown below:
-
-```python
-print('add code snippet 1 here')
-```
-
-Description 2
+During this project, I was particularly happy when I was able to find a more efficient way to render updated information for a step on the project page without having to re-render every other step using the principles of React in conjunction with Redux. Rather than have my Redux state veer away from a normalized state, I added a local state variable that contained all of the ids of the steps that are to be shown on the project page. At first, I was relying on the Redux state to recognize a change in state and rerender the desired information on the page, however, because of the nesting of the normalized state, the changes were not being recognized and the old information remained on the page. I then added a thunk to get all of the steps on the page again even though I only needed to update the information for a single step. This is ultimately why I knew there had to be a more efficient way to populate the updated information on the page and discovered that a local state variable would be able to recognize the changes made more easily, and would allow a rerender of a single step rather than a rerender of every step on the page, creating a better user experience. The code I ended up using can be seen below:
 
 ```javascript
-print("add code snippet 2 here");
-```
+const project = useSelector((state) => state.projects[projectId]);
+const [currentStepIds, setCurrentStepIds] = useState([]);
 
-### {Detail 2}
+.
+.
+.
 
-Description 1
+useEffect(() => {
+	if (project) {
+		setCurrentStepIds(project.stepIds);
+	}
+}, [project]);
 
-Code snippet is shown here:
+.
+.
+.
 
-```javascript
-print("add code snippet 1 here");
+<div className="step_container">
+	{currentStepIds.map((stepId, stepNum) => (
+		<Step
+			key={stepId}
+			stepId={stepId}
+			stepNum={stepNum + 1}
+			setCurrentStepIds={setCurrentStepIds}
+		/>
+	))}
+</div>;
 ```
 
 ## Future Features
@@ -163,6 +171,8 @@ print("add code snippet 1 here");
 2. **Youtube API** - project creators can house and show youtube videos on the site to give additional support to a project or step
 
 3. **Multiple File Upload** - project creators can add more than one image or video as support for their project or step
+
+4. **User Profile Page** - users can go to theirs or other users' profile pages to see the projects that they have created on the site and delete or edit more easily
 
 ## Contact
 
