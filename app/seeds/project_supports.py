@@ -21,10 +21,12 @@ def seed_project_supports():
         projectId=5, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/LEDMatrixPhoto1.png")
     led_ring_support1 = Project_Support(
         projectId=6, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/LEDRingPhoto1.jpeg")
+    pi_screen_support1 = Project_Support(
+        projectId=7, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/RaspberryPiScreenPhoto1.jpeg")
 
     support_list = [computer_support1, computer_support2, phone_support1, phone_support2,
                     tablet_support1, tablet_support2, logic_probe_support1, led_matrix_support1,
-                    led_ring_support1]
+                    led_ring_support1, pi_screen_support1]
 
     for support in support_list:
         db.session.add(support)

@@ -1,5 +1,5 @@
 from app.models import db, Category
-from app.seeds.projects import computer, phone, tablet, logic_probe, led_matrix, led_ring
+from app.seeds.projects import computer, phone, tablet, logic_probe, led_matrix, led_ring, pi_screen
 
 
 # Adds a demo user, you can add other users here if you want
@@ -18,6 +18,7 @@ def seed_categories():
     computers.projects.append(led_matrix)
     computers.projects.append(led_ring)
     phones.projects.append(phone)
+    phones.projects.append(pi_screen)
     tablets.projects.append(tablet)
     electronics.projects.append(computer)
     electronics.projects.append(phone)

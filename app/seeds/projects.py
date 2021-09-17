@@ -33,6 +33,15 @@ I have been using natural light all throughout my classes until recently, as I r
 This Instructable contains a simple proof-of-concept build, and the actual build that will be used. The final part contains a few suggestions that I could not yet try out myself.
 
 With all that out of the way, let's get started!""")
+pi_screen = Project(userId=2, title="Raspberry Pi, Camera, and SPI Screen",
+                    description="""HDMI driver screen or SPI driver screen more suitable to work with Raspberry Pi?
+
+Raspberry Pi 3B, 4B and zero serials provide the HDMI interface that can connect an HDMI driver screen directly. The screen would show the Raspbian desktop directly, does not require programming. Although it is like the computer display to use, the HDMI screen is difficult to deeply develop for the amateur. There are lots of sizes for the screen: 3.5inch, 7inch, 12inch and more. For the portability, the size of 3.5inch is the best choice that it can be carried easily working with Pi outdoor. However, it has a hard problem that it would display all the OS desktop that the icon and word shown on the display is small and unclean to check. The HDMI screen with a small size would cause the touch mistake when touching the small icon by finger. The small words and the touch mistake are terrible and hard to use.
+
+For the SPI driver screen, different from the HDMI driver one, it connects with the Pi by the GPIO, that the Pi outputs the data of the picture through GPIO(SPI). Although it can’t show the OS desktop directly, it is open for customers and suitable for programming that screen can display anything that you developed on the code. The SPI-driver Screen also has lots of sizes that contain 2.8inch, 3.2inch, 3.5inch and more, and the 3.5inch or 3.2inch one is sufficient to show the picture and comfortable for holding. Besides, the screen has more portability to work with PI and is cheaper than the HDMI screen.
+
+In a word, HDMI display is suitable for applications that run on OS, while the SPI display can be more convenient for light applications such as IoT/Smart-home…
+There is a combination version of Pi and the SPI driver screen developed by Makerfabs. I will use it to make a camera and show the effect which the SPI screen works with the Pi.""")
 
 
 def seed_projects():
@@ -43,6 +52,7 @@ def seed_projects():
     db.session.add(logic_probe)
     db.session.add(led_matrix)
     db.session.add(led_ring)
+    db.session.add(pi_screen)
 
     db.session.commit()
 
