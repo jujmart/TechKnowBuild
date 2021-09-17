@@ -25,6 +25,14 @@ led_matrix = Project(userId=1, title="LED-Matrix With Web Server",
 I started this project in October 2020, I bought all the parts and was looking forward to laser cutting the wood in my local FabLab. Unfortunately there were new lock downs due to the pandemic in my country and later I almost lost sight of the project. But this summer break I finally got started!
 
 If you just want to see the instructions and materials skip to step 8 :)""")
+led_ring = Project(userId=1, title="LED Ring Light for Laptop Screen",
+                   description="""Being a teacher in a mostly unvaccinated country, all of my classes for the past year and a half have been held online. This made me try all different things to improve lesson quality. One of the most simple things that did just that was using better lighting.
+
+I have been using natural light all throughout my classes until recently, as I rearranged furniture in my small home office. These made my natural light setup unavailable, and I had thought of using a commercial ring light. However, the problem of where to place it was an issue, as my home office had limited space. In order to maximize my space, I decided to try installing LED strips onto the screen bezel on my laptop.
+
+This Instructable contains a simple proof-of-concept build, and the actual build that will be used. The final part contains a few suggestions that I could not yet try out myself.
+
+With all that out of the way, let's get started!""")
 
 
 def seed_projects():
@@ -34,6 +42,7 @@ def seed_projects():
     db.session.add(tablet)
     db.session.add(logic_probe)
     db.session.add(led_matrix)
+    db.session.add(led_ring)
 
     db.session.commit()
 
