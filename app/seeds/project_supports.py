@@ -17,6 +17,8 @@ def seed_project_supports():
         projectId=3, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/TabletPhoto2.jpeg")
     logic_probe_support1 = Project_Support(
         projectId=4, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/LogicProbePhoto1.jpeg")
+    led_matrix_support1 = Project_Support(
+        projectId=5, projectSupportType="image", projectSupportUrl="https://techknowbuild.s3.us-east-2.amazonaws.com/AWS-Bucket/Project-Support/LEDMatrixPhoto1.png")
 
     support_list = [computer_support1, computer_support2,
                     phone_support1, phone_support2, tablet_support1, tablet_support2, logic_probe_support1]

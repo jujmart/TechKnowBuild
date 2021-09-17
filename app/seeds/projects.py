@@ -13,6 +13,19 @@ Also, in some cases, a logic probe is an easy option to check the functionality 
 
 The logic probe design described in this article uses common and inexpensive ICs, including the popular NE555 timer and LM393 low voltage comparator IC. At the time of this writing, both ICs were prevalent in the market and cost less than US$ 0.25.""")
 
+led_matrix = Project(userId=1, title="LED-Matrix With Web Server",
+                     description="""In my first Instructable we will build a 16x16 LED matrix. In the end you will have
+
+- obviously a LED matrix with 256 LEDs that are all individually controllable
+- a web page hosted on a microcontroller which allows you to
+  - create pixel art live from the web page on the matrix
+  - save creations
+  - display all previous creations in a loop
+
+I started this project in October 2020, I bought all the parts and was looking forward to laser cutting the wood in my local FabLab. Unfortunately there were new lock downs due to the pandemic in my country and later I almost lost sight of the project. But this summer break I finally got started!
+
+If you just want to see the instructions and materials skip to step 8 :)""")
+
 
 def seed_projects():
 
@@ -20,6 +33,7 @@ def seed_projects():
     db.session.add(phone)
     db.session.add(tablet)
     db.session.add(logic_probe)
+    db.session.add(led_matrix)
 
     db.session.commit()
 
