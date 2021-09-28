@@ -25,4 +25,9 @@
 
 .comment_username {
 	color: rgb(1, 87, 1);
+	margin-right: 12px;
+}
+
+.comment_updatedAt {
+	color: lightgray;
 }

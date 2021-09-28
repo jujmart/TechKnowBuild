@@ -14,6 +14,7 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 					className="comment_profile-photo"
 				/>
 				<div className="comment_username">{comment?.username}</div>
+				<div className="comment_updatedAt">{comment?.updatedAt}</div>
 			</div>
 			<div className="comment_content">{comment?.content}</div>
 		</div>
