@@ -38,5 +38,6 @@ class Project(db.Model):
             "categories": [category.name for category in self.categories],
             "project_supportIds": [project_support.id for project_support in self.project_supports],
             "stepIds": stepIds,
-            "username": self.user.username
+            "username": self.user.username,
+            "commentIds": [comment.id for comment in self.comments],
         }
