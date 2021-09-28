@@ -26,4 +26,6 @@ class Comment(db.Model):
             'content': self.content,
             'updatedAt': self.updatedAt,
             'createdAt': self.createdAt,
+            'username': self.user.username,
+            'profilePhotoUrl': self.user.profilePhotoUrl
         }

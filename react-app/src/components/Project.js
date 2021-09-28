@@ -10,6 +10,7 @@ import { DeleteProjectConfirmForm } from "./DeleteProjectConfirmForm";
 import { Step } from "./Step";
 import { StepForm } from "./StepForm";
 import { getSomeComments } from "../store/comment";
+import Comment from "./Comment";
 
 import "./css/Project.css";
 
@@ -152,13 +153,13 @@ export function Project() {
 						/>
 					))}
 				<div className="project_comment-container">
-					{/* {currentCommentIds.map((commentId) => (
-						// <Comment
-						// 	key={commentId}
-						// 	commentId={commentId}
-						// 	setCurrentCommentIds={setCurrentCommentIds}
-						// />
-					))} */}
+					{currentCommentIds.map((commentId) => (
+						<Comment
+							key={commentId}
+							commentId={commentId}
+							setCurrentCommentIds={setCurrentCommentIds}
+						/>
+					))}
 				</div>
 			</div>
 		</div>
