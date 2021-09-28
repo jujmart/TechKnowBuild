@@ -64,4 +64,12 @@
 	width: 800px;
 	max-width: 87.5%;
 	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.project_comment-header {
+	padding-top: 25px;
+	padding-bottom: 15px;
 }

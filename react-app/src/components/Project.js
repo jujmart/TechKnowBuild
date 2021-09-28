@@ -153,6 +153,9 @@ export function Project() {
 						/>
 					))}
 				<div className="project_comment-container">
+					<h2 className="project_comment-header">
+						{currentCommentIds.length} Comments
+					</h2>
 					{currentCommentIds.map((commentId) => (
 						<Comment
 							key={commentId}

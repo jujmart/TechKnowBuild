@@ -1,0 +1,28 @@
+.comment_profile-photo {
+	height: 40px;
+	width: 40px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-right: 12px;
+}
+
+.comment_content {
+	white-space: pre-wrap;
+}
+
+.comment_container {
+	width: 600px;
+	max-width: 80%;
+	padding: 10px 20px;
+	border-top: 1px solid rgb(184, 182, 182);
+}
+
+.comment_user-info {
+	display: flex;
+	align-items: center;
+	margin-bottom: 13px;
+}
+
+.comment_username {
+	color: rgb(1, 87, 1);
+}
