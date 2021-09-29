@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./css/Comment.css";
 
@@ -59,8 +61,12 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 				<div>
 					{comment?.userId === user?.id ? (
 						<>
-							<button>Edit</button>
-							<button>Delete</button>
+							<span className="comment_edit-icon">
+								<FontAwesomeIcon icon={faEdit} />
+							</span>
+							<span className="comment_delete-icon">
+								<FontAwesomeIcon icon={faTrashAlt} />
+							</span>
 						</>
 					) : null}
 				</div>

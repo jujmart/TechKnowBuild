@@ -37,3 +37,13 @@
 	margin-bottom: 13px;
 	justify-content: space-between;
 }
+
+.comment_edit-icon {
+	margin: 0px 7px;
+	cursor: pointer;
+}
+
+.comment_delete-icon {
+	margin-left: 7px;
+	cursor: pointer;
+}
