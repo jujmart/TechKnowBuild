@@ -9,7 +9,7 @@ import { getSomeSteps } from "../store/steps";
 import { DeleteProjectConfirmForm } from "./DeleteProjectConfirmForm";
 import { Step } from "./Step";
 import { StepForm } from "./StepForm";
-import { getSomeComments } from "../store/comment";
+import { createCommentThunk, getSomeComments } from "../store/comment";
 import Comment from "./Comment";
 
 import "./css/Project.css";
@@ -32,12 +32,21 @@ export function Project() {
 		history.push(`/edit-project/${projectId}`);
 	}
 
-	function handleAddComment() {
+	async function handleAddComment() {
 		if (!newComment) {
 			setCommentErrors(["Cannot add an empty comment"]);
 			return;
 		}
-		// setNewComment("");
+		const response = await dispatch(
+			createCommentThunk({ projectId, content: newComment })
+		);
+		if (response.errors) {
+			setCommentErrors(response.errors);
+		} else {
+			setCurrentCommentIds((prevState) => [...prevState, response.id]);
+			setCommentErrors([]);
+			setNewComment("");
+		}
 	}
 
 	useEffect(() => {

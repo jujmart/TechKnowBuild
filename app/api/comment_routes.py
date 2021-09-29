@@ -1,4 +1,4 @@
-from app.forms.step_form import StepForm
+from app.forms.comment_form import CommentForm
 from flask import Blueprint, request
 from app.models import Comment, db
 from flask_login import current_user, login_required
@@ -24,21 +24,21 @@ def get_some_comments():
     return {'comments': [comment.to_dict() for comment in comments]}
 
 
-# @step_routes.route('/', methods=["POST"])
-# @login_required
-# def create_step():
-#     form = StepForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         step = Step(
-#             title=form.data["title"],
-#             instruction=form.data["instruction"],
-#             projectId=form.data["projectId"],
-#         )
-#         db.session.add(step)
-#         db.session.commit()
-#         return {'step': step.to_dict()}
-#     return {'errors': validation_errors_to_error_messages(form.errors)}
+@comment_routes.route('/', methods=["POST"])
+@login_required
+def create_comment():
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment(
+            content=form.data["content"],
+            projectId=form.data["projectId"],
+            userId=current_user.id
+        )
+        db.session.add(comment)
+        db.session.commit()
+        return {'comment': comment.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 # @step_routes.route('/<int:id>', methods=["DELETE"])
