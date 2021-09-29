@@ -7,6 +7,7 @@ import project_supports from "./project_supports";
 import modal from "./modal";
 import steps from "./steps";
 import step_supports from "./step_supports";
+import comments from "./comment";
 
 const rootReducer = combineReducers({
 	session,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	modal,
 	steps,
 	step_supports,
+	comments,
 });
 
 let enhancer;

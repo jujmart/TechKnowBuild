@@ -3,7 +3,6 @@ import { addStep_Supports } from "./step_supports";
 // constants
 const SET_STEPS = "steps/SET_STEPS";
 const ADD_STEP = "steps/ADD_STEP";
-// const UPDATE_PROJECT_SUPPORT = "project_supports/UPDATE_PROJECT_SUPPORT";
 
 const setSteps = (steps) => ({
 	type: SET_STEPS,
@@ -14,11 +13,6 @@ const addStep = (step) => ({
 	type: ADD_STEP,
 	step,
 });
-
-// export const updateProject_Support = (project_support) => ({
-// 	type: UPDATE_PROJECT_SUPPORT,
-// 	project_support,
-// });
 
 export const getSomeSteps = (stepIds) => async (dispatch) => {
 	const response = await fetch(`/api/steps/`, {
@@ -147,10 +141,6 @@ export default function reducer(state = initialState, action) {
 			const newAddState = { ...state };
 			newAddState[action.step.id] = action.step;
 			return newAddState;
-		// case UPDATE_PROJECT_SUPPORT:
-		// 	const newUpdateState = { ...state };
-		// 	newUpdateState[action.project_support.id] = action.project_support;
-		// 	return newUpdateState;
 		default:
 			return state;
 	}

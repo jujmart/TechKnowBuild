@@ -9,6 +9,8 @@ import { getSomeSteps } from "../store/steps";
 import { DeleteProjectConfirmForm } from "./DeleteProjectConfirmForm";
 import { Step } from "./Step";
 import { StepForm } from "./StepForm";
+import { getSomeComments } from "../store/comment";
+import Comment from "./Comment";
 
 import "./css/Project.css";
 
@@ -20,6 +22,7 @@ export function Project() {
 	const user = useSelector((state) => state.session.user);
 	const [showStepForm, setShowStepForm] = useState(false);
 	const [currentStepIds, setCurrentStepIds] = useState([]);
+	const [currentCommentIds, setCurrentCommentIds] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -56,12 +59,23 @@ export function Project() {
 			if (stepIds.length) {
 				dispatch(getSomeSteps(stepIds));
 			}
+
+			const commentIds = [];
+			project.commentIds.forEach((commentId) => {
+				if (!commentIds.includes(commentId)) {
+					commentIds.push(commentId);
+				}
+			});
+			if (commentIds.length) {
+				dispatch(getSomeComments(commentIds));
+			}
 		}
 	}, [dispatch, project]);
 
 	useEffect(() => {
 		if (project) {
 			setCurrentStepIds(project.stepIds);
+			setCurrentCommentIds(project.commentIds);
 		}
 	}, [project]);
 
@@ -138,7 +152,18 @@ export function Project() {
 							setCurrentStepIds={setCurrentStepIds}
 						/>
 					))}
-				<div className="project_comment-container"></div>
+				<div className="project_comment-container">
+					<h2 className="project_comment-header">
+						{currentCommentIds.length} Comments
+					</h2>
+					{currentCommentIds.map((commentId) => (
+						<Comment
+							key={commentId}
+							commentId={commentId}
+							setCurrentCommentIds={setCurrentCommentIds}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
