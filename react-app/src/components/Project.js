@@ -163,6 +163,17 @@ export function Project() {
 							setCurrentCommentIds={setCurrentCommentIds}
 						/>
 					))}
+					{user ? (
+						<div className="project_comment-add_container">
+							<textarea
+								placeholder="Add a comment"
+								className="project_comment-add-content"
+							/>
+							<button className="project_comment-add-button">
+								Add Comment
+							</button>
+						</div>
+					) : null}
 				</div>
 			</div>
 		</div>
