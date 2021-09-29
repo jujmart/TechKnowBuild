@@ -41,18 +41,14 @@ def create_comment():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-# @step_routes.route('/<int:id>', methods=["DELETE"])
-# @login_required
-# def delete_step(id):
-#     step = Step.query.get_or_404(id)
-#     if step.project.userId == current_user.id:
-#         for step_support in step.step_supports:
-#             step_support_url = step_support.stepSupportUrl
-#             if "AWS-Bucket" not in step_support_url:
-#                 delete_file_by_url(step_support_url)
-#         db.session.delete(step)
-#         db.session.commit()
-#     return {}
+@comment_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_comment(id):
+    comment = Comment.query.get_or_404(id)
+    if comment.userId == current_user.id:
+        db.session.delete(comment)
+        db.session.commit()
+    return {}
 
 
 # @step_routes.route('/<int:step_id>', methods=["PUT"])
