@@ -17,6 +17,10 @@
 	border-top: 1px solid rgb(184, 182, 182);
 }
 
+.comment_container:hover {
+	background-color: rgb(168, 168, 238);
+}
+
 .comment_user-info {
 	display: flex;
 	align-items: center;

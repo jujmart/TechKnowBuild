@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./css/Comment.css";
+import { useState } from "react";
 
 export default function Comment({ commentId, setCurrentCommentIds }) {
 	const comment = useSelector((state) => state.comments[commentId]);
 	const user = useSelector((state) => state.session.user);
+	const [showButtonId, setShowButtonId] = useState(0);
 
 	function handleUpdatedTime() {
 		const t = comment.updatedAt.split(/[ :]/);
@@ -45,7 +47,11 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 	}
 
 	return (
-		<div className="comment_container">
+		<div
+			className="comment_container"
+			onMouseEnter={() => setShowButtonId(comment.id)}
+			onMouseLeave={() => setShowButtonId(0)}
+		>
 			<div className="comment_user-info-buttons-container">
 				<div className="comment_user-info">
 					<img
@@ -59,7 +65,8 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 					</div>
 				</div>
 				<div>
-					{comment?.userId === user?.id ? (
+					{comment?.userId === user?.id &&
+					showButtonId === comment?.id ? (
 						<>
 							<span className="comment_edit-icon">
 								<FontAwesomeIcon icon={faEdit} />
