@@ -9,7 +9,7 @@ import { getSomeSteps } from "../store/steps";
 import { DeleteProjectConfirmForm } from "./DeleteProjectConfirmForm";
 import { Step } from "./Step";
 import { StepForm } from "./StepForm";
-import { getSomeComments } from "../store/comment";
+import { createCommentThunk, getSomeComments } from "../store/comment";
 import Comment from "./Comment";
 
 import "./css/Project.css";
@@ -23,11 +23,30 @@ export function Project() {
 	const [showStepForm, setShowStepForm] = useState(false);
 	const [currentStepIds, setCurrentStepIds] = useState([]);
 	const [currentCommentIds, setCurrentCommentIds] = useState([]);
+	const [newComment, setNewComment] = useState("");
+	const [commentErrors, setCommentErrors] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
 	async function handleEditProject() {
 		history.push(`/edit-project/${projectId}`);
+	}
+
+	async function handleAddComment() {
+		if (!newComment) {
+			setCommentErrors(["Cannot add an empty comment"]);
+			return;
+		}
+		const response = await dispatch(
+			createCommentThunk({ projectId, content: newComment })
+		);
+		if (response.errors) {
+			setCommentErrors(response.errors);
+		} else {
+			setCurrentCommentIds((prevState) => [...prevState, response.id]);
+			setCommentErrors([]);
+			setNewComment("");
+		}
 	}
 
 	useEffect(() => {
@@ -163,6 +182,34 @@ export function Project() {
 							setCurrentCommentIds={setCurrentCommentIds}
 						/>
 					))}
+					{user ? (
+						<div className="project_comment-add_container">
+							{commentErrors.length ? (
+								<ul className="errors-ul">
+									{commentErrors.map((commentError) => (
+										<li
+											key={commentError}
+											className="errors-li"
+										>
+											{commentError}
+										</li>
+									))}
+								</ul>
+							) : null}
+							<textarea
+								placeholder="Add a comment"
+								value={newComment}
+								onChange={(e) => setNewComment(e.target.value)}
+								className="project_comment-add-content"
+							/>
+							<button
+								onClick={handleAddComment}
+								className="project_comment-add-button"
+							>
+								Add Comment
+							</button>
+						</div>
+					) : null}
 				</div>
 			</div>
 		</div>

@@ -1,8 +1,14 @@
 const SET_COMMENTS = "comments/SET_COMMENTS";
+const ADD_COMMENT = "comments/ADD_COMMENT";
 
 const setComments = (comments) => ({
 	type: SET_COMMENTS,
 	comments,
+});
+
+const addComment = (comment) => ({
+	type: ADD_COMMENT,
+	comment,
 });
 
 export const getSomeComments = (commentIds) => async (dispatch) => {
@@ -21,6 +27,24 @@ export const getSomeComments = (commentIds) => async (dispatch) => {
 	}
 };
 
+export const createCommentThunk = (data) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/comments/`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+
+		dispatch(addComment(SQLdata.comment));
+		return SQLdata.comment;
+	}
+};
+
 const initialState = {};
 
 export default function commentReducer(state = initialState, action) {
@@ -32,10 +56,10 @@ export default function commentReducer(state = initialState, action) {
 				newSetState[comment.id] = comment;
 			});
 			return newSetState;
-		// case ADD_STEP:
-		// 	const newAddState = { ...state };
-		// 	newAddState[action.step.id] = action.step;
-		// 	return newAddState;
+		case ADD_COMMENT:
+			const newAddState = { ...state };
+			newAddState[action.comment.id] = action.comment;
+			return newAddState;
 		default:
 			return state;
 	}

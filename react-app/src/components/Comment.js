@@ -49,7 +49,7 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 	return (
 		<div
 			className="comment_container"
-			onMouseEnter={() => setShowButtonId(comment.id)}
+			onMouseEnter={() => setShowButtonId(comment?.id)}
 			onMouseLeave={() => setShowButtonId(0)}
 		>
 			<div className="comment_user-info-buttons-container">
