@@ -10,6 +10,8 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 	const comment = useSelector((state) => state.comments[commentId]);
 	const user = useSelector((state) => state.session.user);
 	const [showButtonId, setShowButtonId] = useState(0);
+	const [showEditCommentId, setShowEditCommentId] = useState(0);
+	const [updatedComment, setUpdatedComment] = useState("");
 	const dispatch = useDispatch();
 
 	function handleUpdatedTime() {
@@ -57,6 +59,15 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 		}
 	}
 
+	async function handleEditComment() {
+		// const response = await dispatch(deleteCommentThunk(comment.id));
+		// if (!response) {
+		// 	setCurrentCommentIds((prevState) =>
+		// 		prevState.filter((commentId) => commentId !== comment.id)
+		// 	);
+		// }
+	}
+
 	return (
 		<div
 			className="comment_container"
@@ -79,7 +90,13 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 					{comment?.userId === user?.id &&
 					showButtonId === comment?.id ? (
 						<>
-							<span className="comment_edit-icon">
+							<span
+								onClick={() => {
+									setShowEditCommentId(comment.id);
+									setUpdatedComment(comment.content);
+								}}
+								className="comment_edit-icon"
+							>
 								<FontAwesomeIcon icon={faEdit} />
 							</span>
 							<span
@@ -92,7 +109,30 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 					) : null}
 				</div>
 			</div>
-			<div className="comment_content">{comment?.content}</div>
+			{showEditCommentId !== comment?.id ? (
+				<div className="comment_content">{comment?.content}</div>
+			) : (
+				<div>
+					<textarea
+						placeholder="Update comment"
+						value={updatedComment}
+						onChange={(e) => setUpdatedComment(e.target.value)}
+						className="comment_update-content"
+					/>
+					<button
+						onClick={handleEditComment}
+						className="comment_update-button"
+					>
+						Update Comment
+					</button>
+					<button
+						onClick={() => setShowEditCommentId(0)}
+						className="comment_update-cancel-button"
+					>
+						Cancel
+					</button>
+				</div>
+			)}
 		</div>
 	);
 }
