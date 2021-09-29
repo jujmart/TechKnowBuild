@@ -23,11 +23,21 @@ export function Project() {
 	const [showStepForm, setShowStepForm] = useState(false);
 	const [currentStepIds, setCurrentStepIds] = useState([]);
 	const [currentCommentIds, setCurrentCommentIds] = useState([]);
+	const [newComment, setNewComment] = useState("");
+	const [commentErrors, setCommentErrors] = useState([]);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
 	async function handleEditProject() {
 		history.push(`/edit-project/${projectId}`);
+	}
+
+	function handleAddComment() {
+		if (!newComment) {
+			setCommentErrors(["Cannot add an empty comment"]);
+			return;
+		}
+		// setNewComment("");
 	}
 
 	useEffect(() => {
@@ -165,11 +175,28 @@ export function Project() {
 					))}
 					{user ? (
 						<div className="project_comment-add_container">
+							{commentErrors.length ? (
+								<ul className="errors-ul">
+									{commentErrors.map((commentError) => (
+										<li
+											key={commentError}
+											className="errors-li"
+										>
+											{commentError}
+										</li>
+									))}
+								</ul>
+							) : null}
 							<textarea
 								placeholder="Add a comment"
+								value={newComment}
+								onChange={(e) => setNewComment(e.target.value)}
 								className="project_comment-add-content"
 							/>
-							<button className="project_comment-add-button">
+							<button
+								onClick={handleAddComment}
+								className="project_comment-add-button"
+							>
 								Add Comment
 							</button>
 						</div>
