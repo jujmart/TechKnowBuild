@@ -1,14 +1,16 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { deleteCommentThunk } from "../store/comment";
 
 import "./css/Comment.css";
-import { useState } from "react";
 
 export default function Comment({ commentId, setCurrentCommentIds }) {
 	const comment = useSelector((state) => state.comments[commentId]);
 	const user = useSelector((state) => state.session.user);
 	const [showButtonId, setShowButtonId] = useState(0);
+	const dispatch = useDispatch();
 
 	function handleUpdatedTime() {
 		const t = comment.updatedAt.split(/[ :]/);
@@ -46,6 +48,15 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 		return `${Math.floor(difference / (12 * 30 * 24 * 60 * 60 * 1000))}y`;
 	}
 
+	async function handleDeleteComment() {
+		const response = await dispatch(deleteCommentThunk(comment.id));
+		if (!response) {
+			setCurrentCommentIds((prevState) =>
+				prevState.filter((commentId) => commentId !== comment.id)
+			);
+		}
+	}
+
 	return (
 		<div
 			className="comment_container"
@@ -71,7 +82,10 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 							<span className="comment_edit-icon">
 								<FontAwesomeIcon icon={faEdit} />
 							</span>
-							<span className="comment_delete-icon">
+							<span
+								onClick={handleDeleteComment}
+								className="comment_delete-icon"
+							>
 								<FontAwesomeIcon icon={faTrashAlt} />
 							</span>
 						</>
