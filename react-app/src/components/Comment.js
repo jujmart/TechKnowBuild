@@ -4,6 +4,7 @@ import "./css/Comment.css";
 
 export default function Comment({ commentId, setCurrentCommentIds }) {
 	const comment = useSelector((state) => state.comments[commentId]);
+	const user = useSelector((state) => state.session.user);
 
 	function handleUpdatedTime() {
 		const t = comment.updatedAt.split(/[ :]/);
@@ -43,15 +44,25 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 
 	return (
 		<div className="comment_container">
-			<div className="comment_user-info">
-				<img
-					src={comment?.profilePhotoUrl}
-					alt="Profile Img"
-					className="comment_profile-photo"
-				/>
-				<div className="comment_username">{comment?.username}</div>
-				<div className="comment_updatedAt">
-					{comment ? handleUpdatedTime() : null}
+			<div className="comment_user-info-buttons-container">
+				<div className="comment_user-info">
+					<img
+						src={comment?.profilePhotoUrl}
+						alt="Profile Img"
+						className="comment_profile-photo"
+					/>
+					<div className="comment_username">{comment?.username}</div>
+					<div className="comment_updatedAt">
+						{comment ? handleUpdatedTime() : null}
+					</div>
+				</div>
+				<div>
+					{comment?.userId === user?.id ? (
+						<>
+							<button>Edit</button>
+							<button>Delete</button>
+						</>
+					) : null}
 				</div>
 			</div>
 			<div className="comment_content">{comment?.content}</div>

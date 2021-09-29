@@ -20,7 +20,6 @@
 .comment_user-info {
 	display: flex;
 	align-items: center;
-	margin-bottom: 13px;
 }
 
 .comment_username {
@@ -30,4 +29,11 @@
 
 .comment_updatedAt {
 	color: lightgray;
+}
+
+.comment_user-info-buttons-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 13px;
+	justify-content: space-between;
 }
