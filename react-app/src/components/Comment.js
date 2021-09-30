@@ -12,6 +12,7 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 	const [showButtonId, setShowButtonId] = useState(0);
 	const [showEditCommentId, setShowEditCommentId] = useState(0);
 	const [updatedComment, setUpdatedComment] = useState("");
+	const [editCommentErrors, setEditCommentErrors] = useState([]);
 	const dispatch = useDispatch();
 
 	function handleUpdatedTime() {
@@ -60,11 +61,19 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 	}
 
 	async function handleEditComment() {
-		// const response = await dispatch(deleteCommentThunk(comment.id));
-		// if (!response) {
-		// 	setCurrentCommentIds((prevState) =>
-		// 		prevState.filter((commentId) => commentId !== comment.id)
-		// 	);
+		if (!updatedComment) {
+			setEditCommentErrors(["Cannot add an empty comment"]);
+			return;
+		}
+		// const response = await dispatch(
+		// 	createCommentThunk({ projectId, content: newComment })
+		// );
+		// if (response.errors) {
+		// 	setCommentErrors(response.errors);
+		// } else {
+		// 	setCurrentCommentIds((prevState) => [...prevState, response.id]);
+		// 	setCommentErrors([]);
+		// 	setNewComment("");
 		// }
 	}
 
@@ -113,6 +122,18 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 				<div className="comment_content">{comment?.content}</div>
 			) : (
 				<div>
+					{editCommentErrors.length ? (
+						<ul className="errors-ul add-width">
+							{editCommentErrors.map((editCommentError) => (
+								<li
+									key={editCommentError}
+									className="errors-li"
+								>
+									{editCommentError}
+								</li>
+							))}
+						</ul>
+					) : null}
 					<textarea
 						placeholder="Update comment"
 						value={updatedComment}
@@ -126,7 +147,10 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 						Update Comment
 					</button>
 					<button
-						onClick={() => setShowEditCommentId(0)}
+						onClick={() => {
+							setShowEditCommentId(0);
+							setEditCommentErrors([]);
+						}}
 						className="comment_update-cancel-button"
 					>
 						Cancel

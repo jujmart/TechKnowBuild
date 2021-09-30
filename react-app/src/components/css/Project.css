@@ -90,6 +90,7 @@
 	flex-direction: column;
 	margin-top: 20px;
 	margin-bottom: 10px;
+	max-width: 80%;
 }
 
 .project_comment-add-button {

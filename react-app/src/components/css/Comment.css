@@ -81,3 +81,13 @@
 	border-radius: 5px;
 	cursor: pointer;
 }
+
+.add-width {
+	padding-right: 0px;
+	width: 99%;
+}
+
+.add-width2 {
+	padding-right: 0px;
+	width: 98%;
+}
