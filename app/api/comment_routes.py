@@ -51,15 +51,14 @@ def delete_comment(id):
     return {}
 
 
-# @step_routes.route('/<int:step_id>', methods=["PUT"])
-# @login_required
-# def edit_step(step_id):
-#     form = StepForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         step = Step.query.get_or_404(step_id)
-#         step.title = form.data["title"]
-#         step.instruction = form.data["instruction"]
-#         db.session.commit()
-#         return {'step': step.to_dict()}
-#     return {'errors': validation_errors_to_error_messages(form.errors)}
+@comment_routes.route('/<int:comment_id>', methods=["PUT"])
+@login_required
+def edit_comment(comment_id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment.query.get_or_404(comment_id)
+        comment.content = form.data["content"]
+        db.session.commit()
+        return {'comment': comment.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}

@@ -58,6 +58,23 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
 	}
 };
 
+export const editCommentThunk = (data, commentId) => async (dispatch) => {
+	const SQLresponse = await fetch(`/api/comments/${commentId}`, {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	});
+
+	if (SQLresponse.ok) {
+		const SQLdata = await SQLresponse.json();
+		if (SQLdata.errors) {
+			return SQLdata;
+		}
+
+		dispatch(addComment(SQLdata.comment));
+	}
+};
+
 const initialState = {};
 
 export default function commentReducer(state = initialState, action) {

@@ -185,7 +185,7 @@ export function Project() {
 					{user ? (
 						<div className="project_comment-add_container">
 							{commentErrors.length ? (
-								<ul className="errors-ul">
+								<ul className="errors-ul add-width2">
 									{commentErrors.map((commentError) => (
 										<li
 											key={commentError}
