@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { deleteCommentThunk } from "../store/comment";
+import { deleteCommentThunk, editCommentThunk } from "../store/comment";
 
 import "./css/Comment.css";
 
@@ -65,16 +65,21 @@ export default function Comment({ commentId, setCurrentCommentIds }) {
 			setEditCommentErrors(["Cannot add an empty comment"]);
 			return;
 		}
-		// const response = await dispatch(
-		// 	createCommentThunk({ projectId, content: newComment })
-		// );
-		// if (response.errors) {
-		// 	setCommentErrors(response.errors);
-		// } else {
-		// 	setCurrentCommentIds((prevState) => [...prevState, response.id]);
-		// 	setCommentErrors([]);
-		// 	setNewComment("");
-		// }
+		const response = await dispatch(
+			editCommentThunk(
+				{
+					projectId: comment.projectId,
+					content: updatedComment,
+				},
+				commentId
+			)
+		);
+		if (response) {
+			setEditCommentErrors(response.errors);
+		} else {
+			setEditCommentErrors([]);
+			setShowEditCommentId(0);
+		}
 	}
 
 	return (

@@ -1,4 +1,4 @@
-from app.models import project_support
+from app.models import comment, project_support
 from .db import db
 from sqlalchemy.sql import func
 from app.models.category import project_categories
@@ -29,6 +29,8 @@ class Project(db.Model):
     def to_dict(self):
         stepIds = [step.id for step in self.steps]
         stepIds.sort()
+        commentIds = [comment.id for comment in self.comments]
+        commentIds.sort()
         return {
             'id': self.id,
             'userId': self.userId,
@@ -39,5 +41,5 @@ class Project(db.Model):
             "project_supportIds": [project_support.id for project_support in self.project_supports],
             "stepIds": stepIds,
             "username": self.user.username,
-            "commentIds": [comment.id for comment in self.comments],
+            "commentIds": commentIds,
         }
